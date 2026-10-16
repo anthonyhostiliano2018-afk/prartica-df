@@ -1,0 +1,820 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>4 quizzes con tiempo: sesiones 1, 2, 3 y examen final (DD. FF., Ciudadanía y DD. HH.)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap">
+<style>
+:root{--paper:#ECEEF2;--sheet:#FFFFFF;--ink:#1A2233;--muted:#566074;--rule:#D1D6DE;--sello:#7A5A14;--sello-tint:#F4ECDA;--ok:#1B7A4A;--ok-tint:#E3F2E9;--bad:#B3261E;--bad-tint:#FBE8E6;--mid:#995A00;--mid-tint:#FAF0DE;
+--serif:"Source Serif 4","Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+--sans:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+--barh:64px;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#10141C;--sheet:#181D28;--ink:#E4E7EE;--muted:#9AA2B3;--rule:#2A313F;--sello:#E2B866;--sello-tint:#33280F;--ok:#5CC28E;--ok-tint:#132C1E;--bad:#F28B80;--bad-tint:#3A1C19;--mid:#E3A653;--mid-tint:#33260F;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#10141C;--sheet:#181D28;--ink:#E4E7EE;--muted:#9AA2B3;--rule:#2A313F;--sello:#E2B866;--sello-tint:#33280F;--ok:#5CC28E;--ok-tint:#132C1E;--bad:#F28B80;--bad-tint:#3A1C19;--mid:#E3A653;--mid-tint:#33260F;color-scheme:dark}
+*,*::before,*::after{box-sizing:inherit}
+[hidden]{display:none!important}
+html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1rem/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+.defs{position:absolute;width:0;height:0;overflow:hidden}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.masthead{max-width:780px;margin:0 auto;padding:30px 20px 4px}
+.masthead h1{font:600 clamp(1.7rem,1.15rem + 2.6vw,2.5rem)/1.1 var(--serif);letter-spacing:-.012em;margin:0 0 8px;max-width:22ch;text-wrap:balance}
+.masthead p{margin:0;color:var(--muted);font-size:.95rem}
+.wrap{max-width:780px;margin:0 auto;padding:18px 20px 72px;outline:none}
+.sheet{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:22px clamp(16px,4vw,26px)}
+h2,h3,h4{font-family:var(--serif);font-weight:600;line-height:1.25;margin:0 0 .5em}
+p{margin:0 0 .8em}
+:focus-visible{outline:3px solid var(--sello);outline-offset:2px}
+.btn{appearance:none;-webkit-appearance:none;font:600 .95rem/1.2 var(--sans);padding:11px 18px;min-height:44px;border-radius:6px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+.btn.primary{background:var(--ink);color:var(--sheet)}
+.btn:not(.primary):not(.ghost):hover{background:var(--sello-tint)}
+.btn.primary:hover{opacity:.9}
+.btn.sm{padding:7px 13px;min-height:36px;font-size:.88rem}
+.btn.ghost{border-color:transparent;padding-inline:6px;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+.btn.ghost:hover{color:var(--ink)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:16px}
+.row.between{justify-content:space-between}
+.small{font-size:.86rem;color:var(--muted)}
+.inicio{display:grid;grid-template-columns:1fr 1fr;padding:0}
+.inicio>section{padding:24px clamp(16px,4vw,28px);display:flex;flex-direction:column}
+.inicio>section+section{border-left:1px solid var(--rule)}
+.inicio h2{font-size:1.5rem;margin-bottom:.3em}
+.inicio p{color:var(--muted)}
+.grow{flex:1}
+fieldset{border:0;padding:0;margin:0 0 14px;min-width:0}
+legend{font-weight:700;font-size:.85rem;margin-bottom:6px;padding:0}
+.seg{display:inline-flex;flex-wrap:wrap;border:1.5px solid var(--ink);border-radius:6px;overflow:hidden}
+.seg label{position:relative;display:block}
+.seg input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer}
+.seg span{display:block;padding:7px 13px;font-weight:600;font-size:.9rem}
+.seg label+label span{border-left:1.5px solid var(--ink)}
+.seg input:checked+span{background:var(--ink);color:var(--sheet)}
+.seg input:focus-visible+span{outline:3px solid var(--sello);outline-offset:-4px}
+.estructura{margin:0 0 16px;padding:0;list-style:none}
+.estructura li{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid var(--rule);font-size:.93rem}
+.estructura b{font-variant-numeric:tabular-nums}
+.banner{margin-bottom:14px;border-color:var(--sello);background:var(--sello-tint)}
+.foot{margin:18px 2px 0;max-width:70ch}
+.hist{margin-top:20px}
+.hist h3{font-size:1rem;margin-bottom:6px}
+.hist ul{list-style:none;margin:0;padding:0}
+.hist li{display:flex;gap:4px 12px;align-items:baseline;flex-wrap:wrap;padding:6px 0;border-top:1px solid var(--rule);font-size:.9rem}
+.h-nota{font:700 1.15rem/1 var(--serif);color:var(--sello);min-width:1.4em}
+.h-nota.rojo{color:var(--bad)}
+.ptop{display:flex;align-items:center;gap:10px 14px;flex-wrap:wrap;margin-bottom:8px;font-size:.9rem;color:var(--muted)}
+.ptop .pcount{font-weight:700;color:var(--ink)}
+.ptop .pscore{margin-left:auto}
+.pbar{height:3px;background:var(--rule);border-radius:3px;margin-bottom:16px;overflow:hidden}
+.pbar span{display:block;height:100%;background:var(--sello);transition:width .3s ease}
+.q{margin-bottom:14px;scroll-margin-top:calc(var(--barh) + 12px + env(safe-area-inset-top,0px))}
+.q:focus{outline:none}
+.meta{display:flex;gap:6px 10px;align-items:baseline;flex-wrap:wrap;margin:0 0 10px;font-size:.82rem;color:var(--muted)}
+.utag{font-weight:700;color:var(--ink);border:1.5px solid var(--ink);border-radius:4px;padding:0 7px}
+.meta .pts{margin-left:auto;font-weight:700;color:var(--ink)}
+.q-text{display:block;font:400 1.2rem/1.5 var(--serif);margin:0 0 16px;color:var(--ink)}
+.qn{font-weight:700}
+.op{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;background:transparent;border:1.5px solid var(--rule);border-radius:6px;padding:11px 14px;margin:0 0 8px;font:inherit;color:inherit;cursor:pointer;position:relative}
+.op:hover:not(:disabled){border-color:var(--muted)}
+.op-t{padding-top:2px}
+.bubble{flex:0 0 auto;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--ink);display:grid;place-items:center;font:700 .78rem/1 var(--sans);transition:background-color .15s,color .15s}
+.op input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+.op input:checked+.bubble{background:var(--ink);color:var(--sheet)}
+.op:has(input:checked){border-color:var(--ink)}
+.op input:focus-visible+.bubble{outline:3px solid var(--sello);outline-offset:2px}
+.op.ok{border-color:var(--ok);background:var(--ok-tint)}
+.op.ok .bubble{background:var(--ok);border-color:var(--ok);color:var(--sheet)}
+.op.bad{border-color:var(--bad);background:var(--bad-tint)}
+.op.bad .bubble{background:var(--bad);border-color:var(--bad);color:var(--sheet)}
+.op:disabled{cursor:default}
+.op:disabled:not(.ok):not(.bad){opacity:.55}
+.atajo{margin:12px 0 0}
+@media (hover:none){.atajo{display:none}}
+.fb-box{margin-top:14px;padding:14px 16px;border-radius:6px;border:1.5px solid var(--rule);background:var(--paper)}
+.fb-box.is-ok{border-color:var(--ok);background:var(--ok-tint)}
+.fb-box.is-bad{border-color:var(--bad);background:var(--bad-tint)}
+.fb-box.is-mid{border-color:var(--mid);background:var(--mid-tint)}
+.fb-title{font-weight:700;margin:0 0 6px}
+.fb-box p:last-child{margin-bottom:0}
+.fb-box h4{font:700 .85rem/1.3 var(--sans);margin:12px 0 6px}
+.crit{list-style:none;margin:0;padding:0}
+.crit li{display:flex;gap:8px;margin:0 0 6px;font-size:.93rem}
+.crit .mk{flex:0 0 1.1em;font-weight:700}
+.crit .si .mk{color:var(--ok)}.crit .no .mk{color:var(--bad)}.crit .na .mk{color:var(--muted)}
+.modelo{margin-top:12px;border-top:1px solid var(--rule);padding-top:10px}
+.modelo summary{cursor:pointer;font-weight:700}
+.modelo p{font:400 1.02rem/1.62 var(--serif);margin:8px 0 0}
+textarea{display:block;width:100%;font:400 1rem/1.55 var(--serif);color:var(--ink);background:var(--sheet);border:1.5px solid var(--rule);border-radius:6px;padding:12px 14px;resize:vertical;min-height:190px}
+textarea:focus{border-color:var(--ink);outline:none}
+textarea:focus-visible{outline:3px solid var(--sello);outline-offset:1px}
+textarea[readonly]{background:var(--paper)}
+.ta-meta{display:flex;justify-content:space-between;gap:10px;font-size:.82rem;color:var(--muted);margin-top:6px}
+.warn{color:var(--bad);font-weight:700;margin:10px 0 0}
+.loading{display:flex;align-items:center;gap:4px 8px;flex-wrap:wrap;margin-top:14px;font-weight:700}
+.dots::after{content:"...";display:inline-block;width:1.4em;animation:dots 1.2s steps(1,end) infinite}
+@keyframes dots{0%{content:""}25%{content:"."}50%{content:".."}75%{content:"..."}}
+.exam-bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;align-items:center;gap:6px 16px;flex-wrap:wrap;padding:10px 0;margin:0 0 14px;background:var(--paper);border-bottom:1px solid var(--rule)}
+.timer{font:700 1.05rem/1 var(--sans);font-variant-numeric:tabular-nums}
+#cuenta{color:var(--muted);font-size:.9rem}
+.exam-bar .btn{margin-left:auto}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 20px}
+.chip{width:34px;height:34px;padding:0;border-radius:50%;border:1.5px solid var(--rule);background:var(--sheet);font:700 .78rem/1 var(--sans);color:var(--muted);cursor:pointer}
+.chip.done{background:var(--ink);border-color:var(--ink);color:var(--sheet)}
+.parte{font-size:1.25rem;margin:26px 0 2px}
+.parte-sub{margin:0 0 14px;color:var(--muted);font-size:.92rem}
+.dlg-back{position:fixed;inset:0;z-index:20;background:rgba(10,14,22,.5);display:grid;place-items:center;padding:calc(20px + env(safe-area-inset-top,0px)) 20px calc(20px + env(safe-area-inset-bottom,0px));overflow-y:auto}
+.dlg{max-width:430px;width:100%}
+.dlg h2{font-size:1.3rem}
+.result{display:flex;gap:18px 28px;align-items:center;flex-wrap:wrap}
+.result-txt{flex:1 1 300px;min-width:0}
+.result-txt h2{font-size:1.65rem;margin-bottom:.25em}
+.breakdown{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 18px;margin:14px 0}
+.breakdown div{border-top:1px solid var(--rule);padding-top:8px}
+.breakdown dt{font-size:.82rem;color:var(--muted)}
+.breakdown.tres{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:-4px}
+.breakdown dd{margin:2px 0 0;font:600 1.15rem/1.2 var(--serif);font-variant-numeric:tabular-nums}
+.stamp{--c:var(--sello);flex:0 0 auto;width:156px;height:156px;margin:4px auto;border-radius:50%;border:4px solid var(--c);box-shadow:inset 0 0 0 4px var(--sheet),inset 0 0 0 6px var(--c);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--c);transform:rotate(-8deg);filter:url(#tinta)}
+.stamp.rojo{--c:var(--bad)}
+.s-top,.s-bot{font:800 .7rem/1 var(--sans);letter-spacing:.12em;text-transform:uppercase}
+.s-num{font:700 3.7rem/1 var(--serif);margin:6px 0 4px;font-variant-numeric:lining-nums tabular-nums}
+.stamp.anim{animation:sellar .55s cubic-bezier(.2,.9,.25,1) .15s both}
+@keyframes sellar{0%{opacity:0;transform:scale(1.8) rotate(-18deg)}55%{opacity:1;transform:scale(.93) rotate(-6deg)}100%{opacity:1;transform:scale(1) rotate(-8deg)}}
+.rev-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:30px 0 0}
+.rev-head h2{font-size:1.4rem;margin:0}
+.toggle{display:inline-flex;gap:8px;align-items:center;font-size:.92rem;cursor:pointer}
+.rev{margin-bottom:12px;border-left-width:5px}
+.rev.is-ok{border-left-color:var(--ok)}.rev.is-bad{border-left-color:var(--bad)}.rev.is-mid{border-left-color:var(--mid)}
+.rev .q-text{font-size:1.08rem;margin-bottom:10px}
+.lin{display:flex;gap:2px 12px;flex-wrap:wrap;margin:0 0 6px}
+.lab{flex:0 0 7.5em;font-size:.8rem;font-weight:700;color:var(--muted);padding-top:2px}
+.lin>span:last-child{flex:1 1 260px}
+.exp{margin:10px 0 0;font:400 1rem/1.6 var(--serif)}
+.tu-resp p{white-space:pre-wrap;font-family:var(--serif);margin:4px 0 0;padding:10px 12px;background:var(--paper);border-radius:4px}
+.solo-err .rev[data-ok="1"]{display:none}
+.corrigiendo h2{font-size:1.4rem}
+@media (max-width:640px){.inicio{grid-template-columns:1fr}.inicio>section+section{border-left:0;border-top:1px solid var(--rule)}.q-text{font-size:1.1rem}.result{justify-content:center}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+.kicker{font:800 .72rem/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--sello);margin:0 0 8px}
+.inicio .aviso{margin:4px 0 10px;padding:8px 10px;border-radius:6px;background:var(--sello-tint);color:var(--ink);font-size:.9rem}
+.ultima{display:flex;align-items:baseline;gap:4px 8px;flex-wrap:wrap;margin:0 0 8px}
+.teoria-card{margin-top:14px;display:flex;flex-wrap:wrap;gap:6px 20px;align-items:center;justify-content:space-between}
+.teoria-card>div:first-child{flex:1 1 320px}
+.teoria-card h2{font-size:1.3rem}
+.teoria-card p{color:var(--muted);margin:0}
+.ntag{font-size:.72rem;font-weight:700;color:var(--sello);border:1.5px solid var(--sello);border-radius:4px;padding:0 6px}
+.ex-tit{font:600 1.05rem/1 var(--serif)}
+.teoria .lead{color:var(--muted)}
+#filtro{display:block;width:100%;font:400 1rem/1.4 var(--sans);color:var(--ink);background:var(--sheet);border:1.5px solid var(--rule);border-radius:6px;padding:10px 12px;margin:4px 0 8px;min-height:44px;-webkit-appearance:none;appearance:none}
+#filtro:focus{border-color:var(--ink);outline:none}
+#filtro:focus-visible{outline:3px solid var(--sello);outline-offset:1px}
+.grupo{margin-top:22px}
+.grupo h2{font-size:1.15rem;margin-bottom:8px}
+.tabla{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tabla table{width:100%;border-collapse:collapse;font-size:.93rem}
+.tabla th,.tabla td{text-align:left;vertical-align:top;padding:8px 10px;border-top:1px solid var(--rule)}
+.tabla thead th{font-size:.78rem;color:var(--muted);border-top:0;padding-top:0}
+.tabla tbody th{font-weight:700;white-space:nowrap;color:var(--sello);font-variant-numeric:tabular-nums;width:1%}
+.tabla td.ses{white-space:nowrap;color:var(--muted);font-size:.85rem}
+.claves{margin:0;padding-left:1.2em}
+.claves li{margin:0 0 6px}
+@media (max-width:640px){.tabla tbody th{white-space:normal;min-width:6.5em}.tabla th,.tabla td{padding:8px 6px}}
+.quizgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.excard{display:flex;flex-direction:column}
+.excard h2{font-size:1.4rem;margin-bottom:.3em}
+.excard>p{color:var(--muted)}
+.excard.final{grid-column:1/-1;border:2px solid var(--sello)}
+.excard .aviso{margin:4px 0 10px;padding:8px 10px;border-radius:6px;background:var(--sello-tint);color:var(--ink);font-size:.9rem}
+.excard .obligatorio{margin:0 0 10px;font-weight:600;color:var(--ink)}
+.switch{display:inline-flex;align-items:center;gap:10px;margin:2px 0 12px;font-weight:600;font-size:.92rem;cursor:pointer;position:relative;align-self:flex-start;min-height:32px}
+.switch input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+.sw-track{width:40px;height:24px;border-radius:12px;background:var(--rule);position:relative;flex:0 0 auto;transition:background-color .15s}
+.sw-track::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:var(--sheet);box-shadow:0 1px 2px rgba(0,0,0,.3);transition:transform .15s}
+.switch input:checked+.sw-track{background:var(--sello)}
+.switch input:checked+.sw-track::after{transform:translateX(16px)}
+.switch input:focus-visible+.sw-track{outline:3px solid var(--sello);outline-offset:2px}
+.switch input:disabled+.sw-track{opacity:.5}
+.switch:has(input:disabled){cursor:default}
+.timer.urgente{color:var(--bad)}
+.tbar{flex-basis:100%;height:4px;background:var(--rule);border-radius:4px;overflow:hidden}
+.tbar span{display:block;height:100%;width:100%;background:var(--sello);transition:width 1s linear}
+.exam-bar.urge .tbar span{background:var(--bad)}
+.aviso-fin{border-color:var(--bad);background:var(--bad-tint);margin:0 0 14px}
+.switch{margin:2px 0 6px}
+.switch+.switch{margin-bottom:12px}
+.op:has(input:disabled){cursor:default}
+.op:has(input:disabled):not(.ok):not(.bad){opacity:.55}
+.fb:empty{display:none}
+.fb .fb-box{margin-top:6px}
+.fb .modelo{margin-top:8px;border-top:0;padding-top:0}
+@media (max-width:640px){.quizgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<svg class="defs" aria-hidden="true" focusable="false"><filter id="tinta" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="3" result="ruido"/><feDisplacementMap in="SourceGraphic" in2="ruido" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
+<header class="masthead"><h1>Derechos Fundamentales, Ciudadanía y Derechos Humanos</h1><p>Cuatro quizzes de alternativas con límite de 6 minutos: uno por sesión y un examen final, basados en las diapositivas de clase. Estudios Generales, UNMSM, 2026-II.</p></header>
+<main class="wrap" id="view"></main>
+<script>
+const T={a1:"El Derecho: concepto, objeto y fines",b1:"Norma, ley y sanción",c1:"Derecho natural y derecho positivo",d1:"Derechos fundamentales y derechos humanos",e1:"Artículos 1 y 2 de la Constitución",
+a2:"Familia y matrimonio (arts. 4 al 6)",b2:"Salud y seguridad social (arts. 7 al 12)",c2:"Educación (arts. 13 al 19)",d2:"Colegios profesionales y patrimonio cultural (arts. 20 y 21)",e2:"Trabajo (arts. 22 al 29)",
+a3:"Ciudadanía y capacidad (art. 30)",b3:"Participación, voto y referéndum (arts. 31 y 32)",c3:"Suspensión e impedimentos (arts. 33 al 34-A)",d3:"Organizaciones políticas, asilo y extradición (arts. 35 al 37)",e3:"Deberes (art. 38)"};
+const MC=[
+{id:"q1m01",x:1,u:1,t:T.a1,q:"Según la sesión 1, el Derecho es una ciencia social compuesta de principios y normas inspirados en ideas de:",
+o:["Justicia y orden","Riqueza y poder","Fe y obediencia","Fuerza y castigo"],k:0,
+e:"El Derecho se definió como una ciencia social compuesta de principios y normas, inspirados en ideas de justicia y orden, que regulan la conducta del hombre en sociedad; su incumplimiento implica una sanción."},
+{id:"q1m02",x:1,u:1,t:T.a1,q:"Según la sesión 1, ¿qué son los deberes?",
+o:["Obligaciones morales y sociales con mecanismos de cumplimiento obligatorio","Libertades individuales o sociales garantizadas por la máxima ley","Beneficios económicos que el Estado entrega a todos los ciudadanos","Recomendaciones de conducta que cada persona puede cumplir o no"],k:0,
+e:"La lámina distinguió: los derechos son libertades individuales o sociales garantizadas por la máxima ley (en el Perú, el art. 2 de la Constitución), y los deberes son obligaciones de orden moral y social que incluyen mecanismos de obligatorio cumplimiento."},
+{id:"q1m03",x:1,u:1,t:T.a1,q:"Según la definición de Pereznieto y Ledesma citada en clase, el fin del Derecho es dotar a todos los miembros de la sociedad de los mínimos de:",
+o:["Seguridad, certeza, igualdad, libertad y justicia","Riqueza, salud, vivienda, empleo y descanso","Obediencia, disciplina, orden, castigo y control","Fe, esperanza, caridad, paz y prosperidad"],k:0,
+e:"Según esa definición, el Derecho es el conjunto de normas que imponen deberes y confieren facultades, establecen las bases de la convivencia social y buscan dotar a todos de los mínimos de seguridad, certeza, igualdad, libertad y justicia."},
+{id:"q1m04",x:1,u:1,t:T.a1,q:"Según la sesión 1, la seguridad como fin del Derecho es:",
+o:["La garantía de protección y reparación frente a ataques a la persona y sus bienes","La obligación de cada persona de contratar un seguro privado de vida y de salud","El control policial permanente de todas las actividades de la población","El principio moral de dar a cada uno lo que le corresponde"],k:0,
+e:"La seguridad es la garantía de que la persona, sus bienes y sus derechos no serán objeto de ataques violentos o que, si llegan a producirse, la sociedad le asegurará protección y reparación. Dar a cada uno lo que le corresponde es la justicia."},
+{id:"q1m05",x:1,u:1,t:T.b1,q:"Según la sesión 1, ¿qué es la ley?",
+o:["Una norma dictada por la autoridad competente que manda o prohíbe algo","Una costumbre que nace sola, sin intervención de ninguna autoridad","Un consejo moral que cada ciudadano puede seguir o ignorar","Un acuerdo privado que solo obliga a quienes lo firman"],k:0,
+e:"La ley (del latín lex, legis) es una norma jurídica dictada por el legislador o autoridad competente, en la que se manda o prohíbe algo en consonancia con la justicia, y cuyo incumplimiento conlleva una sanción."},
+{id:"q1m06",x:1,u:1,t:T.b1,q:"En la lámina «El incumplimiento de una norma genera una sanción», ¿cuál NO se mostró como ejemplo de sanción?",
+o:["La clausura de establecimientos","Los embargos","Las multas","El asilo político"],k:3,
+e:"La lámina mostró la clausura de establecimientos (la de un centro comercial por una municipalidad), las penas privativas de libertad (detención, cárcel), los embargos y las multas. El asilo político es una protección a perseguidos (art. 36), no una sanción."},
+{id:"q1m07",x:1,u:1,t:T.c1,q:"Según la sesión 1, ¿cuál fue uno de los ejemplos de derecho natural de la antigüedad?",
+o:["La protección que Zeus daba a los mensajeros en la cultura griega","La Constitución Política del Perú de 1993 y los incisos de su art. 2","El Código Penal peruano y sus cuatro clases de pena","Las ordenanzas municipales del distrito de La Victoria"],k:0,
+e:"Entre los ejemplos de derecho natural se citaron los derechos humanos contemporáneos, los mandamientos religiosos y las leyes divinas de la antigüedad: Zeus protegía a los mensajeros, y matar al que traía malas noticias era una afrenta. Las otras alternativas son derecho positivo."},
+{id:"q1m08",x:1,u:1,t:T.c1,q:"¿Qué afirmación sobre el derecho positivo es correcta, según la sesión 1?",
+o:["Es el derecho escrito que dictan los órganos legislativos","Es un conjunto de reglas no escritas basadas en la naturaleza","Solo existe en las religiones antiguas y en sus leyes divinas","No obliga a nadie porque no tiene ninguna sanción prevista"],k:0,
+e:"El derecho positivo es el derecho escrito: el que figura en las constituciones, códigos y ordenanzas, dictado por las autoridades competentes. Es lo que comúnmente llamamos «la ley» o «las leyes»."},
+{id:"q1m09",x:1,u:1,t:T.d1,q:"Según la sesión 1, el derecho a la intimidad, presentado como ejemplo de derecho humano, es:",
+o:["Un muro que prohíbe divulgar datos de la religión, la política o la vida íntima","El derecho a buscar, recibir y difundir informaciones e ideas de toda índole","El derecho a que nadie sea procesado sin respetar todos los procedimientos","El derecho a que nadie mancille el honor, la reputación ni la imagen"],k:0,
+e:"La lámina definió la intimidad como un muro que prohíbe publicar o dar a conocer datos sobre la religión, la política o la vida íntima. Buscar y difundir informaciones es la libertad; no ser procesado sin respetar los procedimientos, el debido proceso; y no mancillar el honor, la dignidad."},
+{id:"q1m10",x:1,u:1,t:T.e1,num:1,q:"El derecho a la nacionalidad, y a no ser privado de obtener o renovar el pasaporte, está en el art. 2:",
+o:["Inciso 21","Inciso 11","Inciso 19","Inciso 2"],k:0,
+e:"Inc. 21: nacionalidad y pasaporte. Inc. 11: residencia y libre tránsito. Inc. 19: identidad étnica y cultural. Inc. 2: igualdad ante la ley."},
+{id:"q1m11",x:1,u:1,t:T.e1,q:"Según el art. 2, inc. 3, el ejercicio público de todas las confesiones religiosas es libre, siempre que:",
+o:["No ofenda la moral ni altere el orden público","Sea autorizado previamente por el Estado","Pertenezca a la religión católica","Se realice solo dentro de los templos"],k:0,
+e:"El inc. 3 reconoce la libertad de conciencia y de religión, en forma individual o asociada: no hay persecución por ideas o creencias ni delito de opinión, y el ejercicio público de todas las confesiones es libre, siempre que no ofenda la moral ni altere el orden público."},
+{id:"q1m12",x:1,u:1,t:T.e1,q:"Según el art. 2, inc. 11, ¿por qué razones se puede limitar el derecho a transitar por el territorio, salir del país y entrar en él?",
+o:["Por sanidad, por mandato judicial o por la ley de extranjería","Por decisión de cualquier alcalde, prefecto o gobernador regional","Por no haber votado en las últimas elecciones municipales","Por tener deudas pendientes con un banco o con una financiera"],k:0,
+e:"El inc. 11 reconoce el derecho a elegir el lugar de residencia, a transitar por el territorio y a salir y entrar en él, salvo limitaciones por razones de sanidad, por mandato judicial o por aplicación de la ley de extranjería."},
+{id:"q1m13",x:1,u:1,t:T.e1,q:"Según el art. 2, inc. 13, las asociaciones y fundaciones sin fines de lucro:",
+o:["No pueden ser disueltas por resolución administrativa","Necesitan autorización previa del Ministerio del Interior","Solo pueden crearse con un permiso del Congreso","Pueden ser disueltas por cualquier municipalidad"],k:0,
+e:"El inc. 13 reconoce el derecho a asociarse y a constituir fundaciones y otras organizaciones sin fines de lucro, sin autorización previa y con arreglo a ley; además, no pueden ser disueltas por resolución administrativa."},
+{id:"q1m14",x:1,u:1,t:T.e1,q:"Un abogado se niega a revelar lo que su cliente le confió. ¿Qué derecho del art. 2 lo ampara?",
+o:["El secreto profesional (inc. 18)","La legítima defensa (inc. 23)","La libertad de contratar (inc. 14)","El derecho de petición (inc. 20)"],k:0,
+e:"El inc. 18 reconoce el derecho a mantener reserva sobre las propias convicciones políticas, filosóficas, religiosas o de cualquier otra índole, así como a guardar el secreto profesional."},
+{id:"q1m15",x:1,u:1,t:T.e1,num:1,q:"Una persona es agredida en la calle y se defiende para proteger su vida. ¿Qué inciso del art. 2 reconoce ese derecho?",
+o:["Inciso 23: la legítima defensa","Inciso 22: la paz y la tranquilidad","Inciso 1: la identidad","Inciso 16: la propiedad y la herencia"],k:0,
+e:"El inc. 23 reconoce el derecho a la legítima defensa. En la sesión 1 también se mencionó entre los derechos que ninguna ley puede contravenir."},
+{id:"q1m16",x:1,u:1,t:T.e1,q:"Según el art. 2, inc. 24, literal h, si una persona detenida fue golpeada, ¿quién puede pedir de inmediato su examen médico?",
+o:["Cualquier persona","Solo su abogado","Solo el fiscal","Solo un juez"],k:0,
+e:"El literal h dispone que cualquiera puede pedir de inmediato el examen médico de la persona agraviada o de aquella imposibilitada de recurrir por sí misma a la autoridad. Además, las declaraciones obtenidas por la violencia carecen de valor."},
+{id:"q1m17",x:1,u:1,t:T.a1,q:"Según la lámina «Cuatro formas de definir el Derecho», el Derecho como ciencia se enfoca en:",
+o:["El estudio sistemático y riguroso de las leyes y normas jurídicas","La facultad que tiene una persona para hacer, no hacer o exigir algo","El conjunto de leyes, decretos y reglamentos vigentes en el país","La felicidad social que produce cumplir la ley"],k:0,
+e:"Como ciencia, el Derecho se enfoca en el estudio sistemático y riguroso de las leyes y normas jurídicas para comprender su origen, su evolución y su aplicación en la vida cotidiana. La facultad de exigir es el Derecho como facultad; las leyes y decretos, el Derecho como conjunto de normas."},
+{id:"q1m18",x:1,u:1,t:T.a1,q:"Según la sesión 1, el «hombre», a diferencia de la «persona», es:",
+o:["La especie humana en general, el único ser con consciencia y capacidad","Un concepto jurídico que la ley crea para atribuir derechos y obligaciones","Una entidad sin existencia física individual, como una empresa","Solo el ciudadano mayor de dieciocho años inscrito en el registro"],k:0,
+e:"El hombre (varón y mujer) es la especie humana en general, el único con consciencia y capacidad; la persona es un concepto jurídico. La entidad sin existencia física individual sujeta a derechos y obligaciones es la persona jurídica."},
+{id:"q1m19",x:1,u:1,t:T.e1,q:"Según el art. 2, inc. 20, cuando alguien formula una petición por escrito, la autoridad está obligada a:",
+o:["Responderle por escrito dentro del plazo legal","Responderle solo si la petición es colectiva y la firman varios","Archivarla si el ciudadano no paga una tasa especial","Responder de forma verbal cuando lo considere conveniente"],k:0,
+e:"El inc. 20 reconoce el derecho a formular peticiones, individual o colectivamente, por escrito ante la autoridad competente, que está obligada a dar al interesado una respuesta también por escrito dentro del plazo legal, bajo responsabilidad."},
+{id:"q1m20",x:1,u:1,t:T.e1,num:1,q:"La libertad de creación intelectual, artística, técnica y científica, y la propiedad sobre esas creaciones, están en el art. 2:",
+o:["Inciso 8","Inciso 16","Inciso 4","Inciso 14"],k:0,
+e:"Inc. 8: libertad de creación intelectual, artística, técnica y científica, y propiedad sobre esas creaciones. Inc. 16: propiedad y herencia. Inc. 4: libertades de información, opinión y expresión. Inc. 14: contratar con fines lícitos."},
+{id:"q2m01",x:2,u:2,t:T.a2,q:"¿Qué institución municipal se mostró en clase como defensora de los niños, niñas y adolescentes al estudiar el art. 4?",
+o:["DEMUNA","CONADIS","ONPE","SUNAFIL"],k:0,
+e:"La DEMUNA es la Defensoría Municipal del Niño, Niña y Adolescente. El art. 4 obliga a la comunidad y al Estado a proteger especialmente al niño, al adolescente, a la madre y al anciano en situación de abandono."},
+{id:"q2m02",x:2,u:2,t:T.a2,q:"Según la sesión 2, ¿cuándo se tramita un divorcio por causal ante el Poder Judicial?",
+o:["Cuando un cónyuge no está de acuerdo o hay conflictos por bienes e hijos","Cuando ambos cónyuges están de acuerdo y no tienen hijos menores","Cuando la pareja convivió menos de dos años antes de casarse por civil","Siempre que uno de los cónyuges lo solicite en una notaría"],k:0,
+e:"El divorcio por mutuo acuerdo (Ley 29227) se tramita en municipalidades autorizadas o notarías. El divorcio por causal se tramita ante el Poder Judicial cuando uno de los cónyuges no está de acuerdo o existen conflictos sobre bienes e hijos."},
+{id:"q2m03",x:2,u:2,t:T.a2,q:"Según el art. 6, el Estado asegura programas de educación e información y el acceso a medios (de planificación familiar) que:",
+o:["No afecten la vida o la salud","Sean gratuitos para todas las familias","Hayan sido aprobados por la Iglesia","Reduzcan obligatoriamente la natalidad"],k:0,
+e:"El art. 6 reconoce el derecho de las familias y de las personas a decidir, y dispone que el Estado asegura los programas de educación y la información adecuados y el acceso a los medios, siempre que no afecten la vida o la salud."},
+{id:"q2m04",x:2,u:2,t:T.b2,q:"Según el art. 7, además del derecho a la protección de la salud, todos tienen:",
+o:["El deber de contribuir a la promoción y defensa de la salud","El derecho a medicinas gratuitas en cualquier farmacia","La obligación de afiliarse a una AFP privada al cumplir 18 años","El derecho a elegir libremente a su médico en EsSalud"],k:0,
+e:"El art. 7 reconoce el derecho a la protección de la salud propia, del medio familiar y de la comunidad, así como el deber de contribuir a su promoción y defensa."},
+{id:"q2m05",x:2,u:2,t:T.b2,num:1,q:"El Estado combate y sanciona el tráfico ilícito de drogas y regula el uso de los tóxicos sociales según el:",
+o:["Artículo 8","Artículo 7","Artículo 9","Artículo 12"],k:0,
+e:"Art. 7: salud y protección de la persona con discapacidad. Art. 8: tráfico ilícito de drogas y tóxicos sociales. Art. 9: política nacional de salud. Art. 12: intangibilidad de los fondos de la seguridad social."},
+{id:"q2m06",x:2,u:2,t:T.b2,q:"Al estudiar el art. 11 se mostraron logotipos de entidades de pensiones. ¿Cuál de ellas es la entidad del Estado?",
+o:["ONP","Profuturo","Integra","Prima"],k:0,
+e:"La ONP (Oficina de Normalización Previsional) es la entidad del Gobierno Nacional que administra los regímenes de pensiones a cargo del Estado. Profuturo, Integra, Prima y Habitat son AFP privadas: el art. 11 permite el acceso a pensiones a través de entidades públicas, privadas o mixtas."},
+{id:"q2m07",x:2,u:2,t:T.c2,q:"Según el art. 13, los padres de familia tienen el deber de educar a sus hijos y el derecho de:",
+o:["Escoger el centro educativo y participar en el proceso educativo","Elegir las calificaciones que sus hijos reciben al final del año","Decidir el sueldo de los profesores del colegio de sus hijos","Cerrar el colegio cuando no estén de acuerdo con su director"],k:0,
+e:"El art. 13 establece que la educación tiene como finalidad el desarrollo integral de la persona, que el Estado garantiza la libertad de enseñanza y que los padres tienen el deber de educar a sus hijos y el derecho de escoger los centros de educación y de participar en el proceso educativo."},
+{id:"q2m08",x:2,u:2,t:T.c2,q:"Según el art. 14, ¿quiénes deben colaborar con el Estado en la educación y en la formación moral y cultural?",
+o:["Los medios de comunicación social","Las Fuerzas Armadas","Los partidos políticos","Los colegios profesionales"],k:0,
+e:"El art. 14 dispone que los medios de comunicación social deben colaborar con el Estado en la educación y en la formación moral y cultural. También establece que es deber del Estado promover el desarrollo científico y tecnológico del país."},
+{id:"q2m09",x:2,u:2,t:T.c2,q:"Según el art. 17, ¿qué tipo de educación fomenta el Estado según las características de cada zona?",
+o:["Bilingüe e intercultural","Exclusivamente en castellano","Solo técnica y productiva","Militar y religiosa"],k:0,
+e:"El art. 17 establece que el Estado fomenta la educación bilingüe e intercultural según las características de cada zona, preserva las diversas manifestaciones culturales y lingüísticas del país y promueve la integración nacional."},
+{id:"q2m10",x:2,u:2,t:T.c2,q:"Según el art. 18, ¿qué garantiza el Estado en la universidad, junto con el rechazo a la intolerancia?",
+o:["La libertad de cátedra","La gratuidad total para todos los alumnos","El ingreso sin examen de admisión","La elección de rectores por el Congreso"],k:0,
+e:"El art. 18 dispone que el Estado garantiza la libertad de cátedra y rechaza la intolerancia. La universidad es la comunidad de profesores, alumnos y graduados."},
+{id:"q2m11",x:2,u:2,t:T.c2,q:"Según el art. 19, las donaciones y becas con fines educativos:",
+o:["Gozan de exoneración y beneficios tributarios según la ley","Están prohibidas en las universidades públicas del país","Deben pagar el doble del impuesto a la renta normal","Solo pueden otorgarlas los bancos y las empresas mineras"],k:0,
+e:"El art. 19 establece que las donaciones y becas con fines educativos gozan de exoneración y beneficios tributarios en la forma y dentro de los límites que fije la ley; además, los centros educativos gozan de inafectación de impuestos en lo propio de su finalidad educativa."},
+{id:"q2m12",x:2,u:2,t:T.d2,q:"En la diapositiva sobre el art. 20 (colegios profesionales), ¿qué fecha se mostró como el Día del Licenciado en Administración?",
+o:["14 de febrero","1 de mayo","28 de julio","8 de octubre"],k:0,
+e:"La diapositiva mostró que el 14 de febrero es el Día del Licenciado en Administración, junto con la Ley 31060, del ejercicio profesional del licenciado en administración."},
+{id:"q2m13",x:2,u:2,t:T.e2,q:"Según el art. 23, el Estado promueve condiciones para el progreso social y económico, en especial mediante políticas de:",
+o:["Fomento del empleo productivo y de educación para el trabajo","Congelamiento de sueldos y reducción de las vacaciones anuales","Prohibición de la inversión privada en todos los sectores","Eliminación de los sindicatos y de la negociación colectiva"],k:0,
+e:"El art. 23 establece que el trabajo es objeto de atención prioritaria del Estado, que promueve el progreso social y económico mediante políticas de fomento del empleo productivo y de educación para el trabajo."},
+{id:"q2m14",x:2,u:2,t:T.e2,q:"Según la diapositiva del art. 24, ¿cuál era el sueldo mínimo a partir del 1 de enero de 2025?",
+o:["S/ 1 130","S/ 1 025","S/ 930","S/ 1 500"],k:0,
+e:"La diapositiva indicó que el sueldo mínimo pasó a S/ 1 130 desde el 1 de enero de 2025. Según el art. 24, las remuneraciones mínimas las regula el Estado con participación de las organizaciones de trabajadores y empleadores."},
+{id:"q2m15",x:2,u:2,t:T.e2,q:"Según el art. 28, el Estado regula el derecho de huelga para que se ejerza:",
+o:["En armonía con el interés social, con excepciones y límites","Sin ninguna limitación, en cualquier momento y en cualquier sector","Solo con autorización previa y escrita del empleador","Únicamente en el sector público y nunca en empresas privadas"],k:0,
+e:"El art. 28 reconoce los derechos de sindicación, negociación colectiva y huelga, y dispone que el Estado regula la huelga para que se ejerza en armonía con el interés social, señalando sus excepciones y limitaciones."},
+{id:"q2m16",x:2,u:2,t:T.e2,num:1,q:"¿Qué artículo establece que ninguna relación laboral puede limitar el ejercicio de los derechos constitucionales ni rebajar la dignidad del trabajador?",
+o:["Artículo 23","Artículo 22","Artículo 26","Artículo 29"],k:0,
+e:"Art. 22: el trabajo es un deber y un derecho. Art. 23: atención prioritaria al trabajo, protección de la madre, el menor y el impedido, y prohibición de rebajar la dignidad del trabajador. Art. 26: principios laborales. Art. 29: utilidades."},
+{id:"q2m17",x:2,u:2,t:T.a2,q:"Según el art. 6, ¿qué es deber y derecho de los padres respecto de sus hijos?",
+o:["Alimentar, educar y dar seguridad a sus hijos","Elegir la profesión que sus hijos estudiarán","Administrar los sueldos de sus hijos mayores de edad","Decidir con quién se casarán sus hijos"],k:0,
+e:"El art. 6 dispone que es deber y derecho de los padres alimentar, educar y dar seguridad a sus hijos, y que los hijos tienen el deber de respetar y asistir a sus padres. Además, todos los hijos tienen iguales derechos y deberes."},
+{id:"q2m18",x:2,u:2,t:T.c2,q:"Según el art. 15, el profesorado en la enseñanza oficial es:",
+o:["Carrera pública","Un servicio voluntario no remunerado","Una actividad reservada a los colegios profesionales","Un cargo de confianza del alcalde"],k:0,
+e:"El art. 15 establece que el profesorado en la enseñanza oficial es carrera pública, que la ley fija los requisitos para ser director o profesor, y que el Estado y la sociedad procuran su evaluación, capacitación, profesionalización y promoción permanentes."},
+{id:"q2m19",x:2,u:2,t:T.e2,num:1,q:"El derecho a una remuneración equitativa y suficiente, y la prioridad de su pago sobre cualquier otra obligación del empleador, están en el:",
+o:["Artículo 24","Artículo 23","Artículo 25","Artículo 29"],k:0,
+e:"Art. 23: atención prioritaria al trabajo. Art. 24: remuneración equitativa y suficiente, prioridad de pago y remuneración mínima. Art. 25: jornada y descanso. Art. 29: participación en las utilidades."},
+{id:"q2m20",x:2,u:2,t:T.b2,q:"Según el art. 9, el Poder Ejecutivo debe diseñar y conducir la política nacional de salud en forma:",
+o:["Plural y descentralizadora","Centralizada desde Lima","Privada, a cargo de clínicas","Militar, a cargo de las Fuerzas Armadas"],k:0,
+e:"El art. 9 dispone que el Estado determina la política nacional de salud y que el Poder Ejecutivo la norma y supervisa, y es responsable de diseñarla y conducirla en forma plural y descentralizadora para facilitar a todos el acceso equitativo a los servicios de salud."},
+{id:"q3m01",x:3,u:3,t:T.a3,q:"Según la sesión 3, ser ciudadano implica formar parte de una comunidad social con derechos civiles y obligaciones cívicas, como:",
+o:["Tener una identidad nacional y participar en la vida política","Pagar impuestos al país donde se reside, aunque sea extranjero","Pertenecer obligatoriamente a un partido político inscrito","Vivir en la capital del país o en una capital de región"],k:0,
+e:"La ciudadanía se refiere al conjunto de derechos y deberes de un individuo en su relación con la sociedad; ser ciudadano implica formar parte de una comunidad con derechos civiles y obligaciones cívicas, como tener una identidad nacional y participar en la vida política."},
+{id:"q3m02",x:3,u:3,t:T.a3,q:"Un bebé de un mes hereda una casa de su abuelo. Según la sesión 3, ¿qué capacidad le permite ser titular de ese bien?",
+o:["La capacidad de goce","La capacidad de ejercicio","La ciudadanía","La mayoría de edad"],k:0,
+e:"La capacidad de goce se adquiere con el nacimiento y es la aptitud para ser titular de derechos y obligaciones. El bebé puede ser dueño de la casa, aunque no pueda ejercer por sí mismo esos derechos: eso requiere capacidad de ejercicio, que se adquiere con la mayoría de edad."},
+{id:"q3m03",x:3,u:3,t:T.b3,q:"Según el art. 31, ¿quiénes tienen derecho al voto?",
+o:["Los ciudadanos en goce de su capacidad civil e inscritos en el registro","Todos los peruanos desde los dieciséis años, aunque no estén inscritos","Solo quienes tienen un título profesional o técnico registrado","Los extranjeros que tienen más de un año de residencia en el Perú"],k:0,
+e:"Tienen derecho al voto los ciudadanos en goce de su capacidad civil, y para ejercerlo se requiere estar inscrito en el registro correspondiente. El voto es personal, igual, libre, secreto y obligatorio hasta los 70 años."},
+{id:"q3m04",x:3,u:3,t:T.b3,q:"Según el art. 31, ¿qué deben garantizar los mecanismos que establece la ley durante los procesos electorales y de participación ciudadana?",
+o:["La neutralidad estatal","El voto público","La reelección de las autoridades","La censura de los medios"],k:0,
+e:"El art. 31 encarga a la ley establecer los mecanismos para garantizar la neutralidad estatal durante los procesos electorales y de participación ciudadana: el Estado no puede favorecer a ningún candidato."},
+{id:"q3m05",x:3,u:3,t:T.b3,q:"Según el art. 31, es derecho y deber de los vecinos:",
+o:["Participar en el gobierno municipal de su jurisdicción","Elegir al Presidente del Consejo de Ministros","Aprobar cada año el presupuesto nacional de la República","Nombrar a los jueces de su distrito"],k:0,
+e:"El art. 31 dispone que es derecho y deber de los vecinos participar en el gobierno municipal de su jurisdicción, y que la ley norma y promueve los mecanismos directos e indirectos de su participación, como las juntas vecinales."},
+{id:"q3m06",x:3,u:3,t:T.b3,q:"Según el art. 32, ¿cuántas materias pueden someterse a referéndum?",
+o:["Cuatro","Tres","Dos","Seis"],k:0,
+e:"Son cuatro: la reforma total o parcial de la Constitución, la aprobación de normas con rango de ley, las ordenanzas municipales y las materias relativas al proceso de descentralización. Hay tres exclusiones: la supresión o disminución de derechos fundamentales, las normas tributarias y presupuestales, y los tratados internacionales en vigor."},
+{id:"q3m07",x:3,u:3,t:T.b3,q:"¿Cuál de estas propuestas NO formó parte del Referéndum Nacional 2018?",
+o:["La pena de muerte para delitos graves","La Junta Nacional de Justicia","El financiamiento de las organizaciones políticas","La prohibición de la reelección inmediata de parlamentarios"],k:0,
+e:"En 2018 se consultaron cuatro reformas: la Junta Nacional de Justicia (antes Consejo Nacional de la Magistratura), el financiamiento de las organizaciones políticas, la no reelección inmediata de parlamentarios y la bicameralidad. La pena de muerte no se consultó."},
+{id:"q3m08",x:3,u:3,t:T.c3,q:"¿Qué causa de suspensión de la ciudadanía implica la reclusión del condenado en un centro penitenciario?",
+o:["La sentencia con pena privativa de la libertad","La resolución judicial de interdicción","La sentencia con inhabilitación de los derechos políticos","La falta de inscripción electoral"],k:0,
+e:"La pena privativa de la libertad consiste en restringir el movimiento del condenado y recluirlo en un establecimiento como un centro penitenciario. La interdicción es la declaración judicial de incapacidad, y la inhabilitación suspende el derecho a elegir, ser elegido y ejercer funciones públicas."},
+{id:"q3m09",x:3,u:3,t:T.c3,q:"En la diapositiva del art. 33, ¿qué caso se mostró como ejemplo de inhabilitación de los derechos políticos?",
+o:["Martín Vizcarra, inhabilitado por diez años por el cierre del Congreso","Alejandro Toledo, extraditado desde Estados Unidos al Perú","La familia de Pedro Castillo, que recibió asilo de México","Nadine Heredia, que solicitó asilo en la embajada de Brasil"],k:0,
+e:"La diapositiva mostró el titular sobre la inhabilitación por diez años de Martín Vizcarra por el cierre del Congreso en 2019. Toledo fue el ejemplo de extradición (art. 37), y Castillo y Heredia, los de asilo (art. 36)."},
+{id:"q3m10",x:3,u:3,t:T.c3,q:"Un general del Ejército en actividad quiere postular al Congreso. Según el art. 34:",
+o:["No puede postular mientras no haya pasado a la situación de retiro","Puede postular siempre que renuncie a su derecho al voto","Puede postular, pero solo en elecciones municipales y regionales","Puede postular si su partido está inscrito en el registro"],k:0,
+e:"Los miembros de las Fuerzas Armadas y de la Policía Nacional tienen derecho al voto y a la participación ciudadana, pero no pueden postular a cargos de elección popular, participar en actividades partidarias o manifestaciones ni hacer proselitismo mientras no hayan pasado a la situación de retiro."},
+{id:"q3m11",x:3,u:3,t:T.c3,q:"Una persona fue condenada en primera instancia como cómplice de un delito doloso y apeló la sentencia. Según el art. 34-A:",
+o:["Está impedida de postular, aunque la sentencia no esté firme","Puede postular, porque la sentencia todavía no está firme","Puede postular, porque solo fue cómplice y no autora del delito","Solo estaría impedida si el delito hubiera sido culposo"],k:0,
+e:"El art. 34-A (Ley 31042) impide postular a quienes tengan una sentencia condenatoria emitida en primera instancia, como autores o cómplices, por delito doloso. No exige que la sentencia esté firme, y alcanza tanto al autor como al cómplice."},
+{id:"q3m12",x:3,u:3,t:T.d3,q:"Según el art. 36, ¿quién califica la condición de asilado político que el Perú acepta?",
+o:["El gobierno asilante","La Corte Suprema","El país que persigue al asilado","El Jurado Nacional de Elecciones"],k:0,
+e:"El art. 36 dispone que el Estado reconoce el asilo político y acepta la calificación del asilado que otorga el gobierno asilante; en caso de expulsión, no se entrega al asilado al país cuyo gobierno lo persigue."},
+{id:"q3m13",x:3,u:3,t:T.d3,q:"Según el art. 37, la extradición se concede en cumplimiento de la ley y de los tratados, y según el principio de:",
+o:["Reciprocidad","Territorialidad","Irretroactividad","Doble instancia"],k:0,
+e:"La extradición solo la concede el Poder Ejecutivo previo informe de la Corte Suprema, en cumplimiento de la ley y de los tratados, y según el principio de reciprocidad, es decir, de trato recíproco entre Estados."},
+{id:"q3m14",x:3,u:3,t:T.d3,q:"Una persona perseguida en otro país por actos de terrorismo pide no ser extraditada alegando que es una perseguida política. Según el art. 37:",
+o:["Puede ser extraditada, porque el terrorismo no se considera delito político","No puede ser extraditada, porque toda persecución es política","No puede ser extraditada si tiene familia en el Perú","Solo el Congreso puede decidir si se la extradita"],k:0,
+e:"Quedan excluidos de la extradición los perseguidos por delitos políticos o hechos conexos, pero el art. 37 aclara que no se consideran tales el genocidio, el magnicidio ni el terrorismo. La extradición la concede el Poder Ejecutivo previo informe de la Corte Suprema."},
+{id:"q3m15",x:3,u:3,t:T.e3,q:"¿Qué símbolos patrios se mostraron al estudiar el deber de honrar al Perú (art. 38)?",
+o:["El escudo, el himno y la bandera","El escudo, la Constitución y la escarapela","La bandera, el sol y el cóndor","El himno, la marinera y la vicuña"],k:0,
+e:"Al explicar el art. 38 se mostraron el escudo, el himno y la bandera. Honrar al Perú significa demostrar lealtad, compromiso y devoción hacia la nación, con respeto por su historia y sus símbolos patrios."},
+{id:"q3m16",x:3,u:3,t:T.e3,q:"Como tarea sobre el deber de honrar al Perú, se trabajaron canciones de dos intérpretes peruanos. ¿Quiénes fueron?",
+o:["Arturo Cavero y Luis Abanto Morales","Chabuca Granda y Lucha Reyes","Susana Baca y Eva Ayllón","Gian Marco y Pedro Suárez-Vértiz"],k:0,
+e:"La tarea incluyó «Y se llama Perú», interpretada por Arturo Cavero (1940-2009), y «Cholo soy», interpretada por Luis Abanto Morales (1923-2017), dos canciones sobre la identidad y el amor por el Perú."},
+{id:"q3m17",x:3,u:3,t:T.a3,num:1,q:"¿Qué artículo del Código Civil, citado en la sesión 3, dispone que la capacidad de ejercicio solo puede ser restringida por ley?",
+o:["Artículo 3","Artículo 234","Artículo 326","Artículo 28"],k:0,
+e:"El art. 3 del Código Civil establece que toda persona tiene capacidad jurídica para el goce y ejercicio de sus derechos, y que la capacidad de ejercicio solo puede ser restringida por ley. El 234 trata del matrimonio y el 326 de la unión de hecho; el art. 28 que se vio es del Código Penal."},
+{id:"q3m18",x:3,u:3,t:T.b3,q:"Según el art. 31, ¿cuál de estos derechos tienen los ciudadanos?",
+o:["Elegir y ser elegidos libremente, según la ley orgánica","Votar solo si son propietarios de un inmueble inscrito","Postular a cargos públicos sin inscribirse en ningún registro","Nombrar directamente a los jueces de la Corte Suprema"],k:0,
+e:"El art. 31 reconoce el derecho de los ciudadanos a ser elegidos y a elegir libremente a sus representantes, de acuerdo con las condiciones y procedimientos determinados por ley orgánica, además de los mecanismos de participación directa."},
+{id:"q3m19",x:3,u:3,t:T.d3,q:"Según la diapositiva del art. 35, ¿en qué registro se inscriben los partidos políticos?",
+o:["El Registro de Organizaciones Políticas (ROP)","El Registro Único de Contribuyentes (RUC)","El Registro de Personas Naturales del RENIEC","El Registro de la Propiedad Inmueble"],k:0,
+e:"La diapositiva mostró a los partidos políticos inscritos en el ROP (Registro de Organizaciones Políticas). Según el art. 35, esa inscripción les concede personalidad jurídica."},
+{id:"q3m20",x:3,u:3,t:T.d3,q:"Según la diapositiva sobre el asilo político, ¿qué ocurrió en el caso de la familia de Pedro Castillo?",
+o:["Recibió asilo de México, y el Perú expulsó al embajador mexicano","Fue extraditada a Estados Unidos por pedido de la Corte Suprema","Solicitó asilo en la embajada de Brasil, como Nadine Heredia","Fue declarada interdicta por un juez y perdió la ciudadanía"],k:0,
+e:"La diapositiva mostró una noticia: México concedió asilo a la familia de Pedro Castillo y el gobierno peruano expulsó al embajador mexicano. Nadine Heredia fue el ejemplo de solicitud de asilo a Brasil, y Alejandro Toledo, el de extradición desde Estados Unidos."},
+{id:"q4m01",x:4,u:1,t:T.e1,num:1,q:"¿Qué inciso del art. 2 contiene la presunción de inocencia, el principio de legalidad penal y la prohibición de la prisión por deudas?",
+o:["Inciso 24","Inciso 23","Inciso 20","Inciso 1"],k:0,
+e:"El inc. 24 (libertad y seguridad personales) contiene, entre otros, la prohibición de la prisión por deudas (literal c), la legalidad penal (literal d) y la presunción de inocencia (literal e)."},
+{id:"q4m02",x:4,u:1,t:T.b1,num:1,q:"¿Qué artículo del Código Penal establece las clases de pena (privativa de libertad, restrictivas de libertad, limitativas de derechos y multa)?",
+o:["Artículo 28","Artículo 326","Artículo 234","Artículo 3"],k:0,
+e:"El art. 28 del Código Penal (D. Leg. 635) fija las clases de pena. Los arts. 3, 234 y 326 son del Código Civil: capacidad, matrimonio y unión de hecho."},
+{id:"q4m03",x:4,u:1,t:T.d1,q:"Según los conceptos básicos de la sesión 1, ¿qué alcance tienen los derechos humanos?",
+o:["Protegen la dignidad de todos los seres humanos en el mundo","Solo rigen dentro del territorio peruano y para peruanos","Solo protegen a quienes tienen DNI y están inscritos","Solo rigen en las relaciones entre particulares, no frente al Estado"],k:0,
+e:"Los derechos humanos son normas que reconocen y protegen la dignidad de todos los seres humanos en el mundo, y rigen tanto las relaciones entre las personas como sus relaciones con el Estado y las obligaciones del Estado hacia ellas. Los derechos fundamentales son los que cada país incluye en su Constitución."},
+{id:"q4m04",x:4,u:1,t:T.e1,q:"La frase «La ley es dura, pero es la ley», que aparece al cerrar la sesión 1, expresa que:",
+o:["La ley debe cumplirse aunque resulte exigente","Solo deben cumplirse las leyes que nos gustan","Las leyes duras no tienen validez","Los jueces pueden ignorar las leyes severas"],k:0,
+e:"La frase (en latín, dura lex, sed lex) recuerda que la ley obliga aunque su cumplimiento resulte difícil. En la misma lámina se recordó que la Constitución es la máxima ley, la «ley de leyes»."},
+{id:"q4m05",x:4,u:1,t:T.a1,q:"Según la sesión 1, ¿cuál de estas NO es una de las cuatro formas de definir el Derecho?",
+o:["El Derecho como castigo divino","El Derecho como facultad","El Derecho como idea de justicia","El Derecho como ciencia"],k:0,
+e:"Las cuatro formas vistas en clase son el Derecho como facultad, como conjunto de normas, como idea de justicia y como ciencia."},
+{id:"q4m17",x:4,u:1,t:T.e1,num:1,q:"El derecho a la igualdad ante la ley y a no ser discriminado está en el art. 2:",
+o:["Inciso 2","Inciso 1","Inciso 19","Inciso 24"],k:0,
+e:"Inc. 1: vida, identidad e integridad. Inc. 2: igualdad ante la ley y no discriminación por origen, raza, sexo, idioma, religión, opinión, condición económica o de cualquier otra índole. Inc. 19: identidad étnica y cultural. Inc. 24: libertad y seguridad personales."},
+{id:"q4m18",x:4,u:1,t:T.c1,q:"Según la sesión 1, ¿cuál de estos es un ejemplo de derecho natural?",
+o:["Los mandamientos religiosos tenidos como leyes divinas","El Código Penal peruano (Decreto Legislativo 635)","La Ley General de Sociedades (Ley 26887)","Una ordenanza municipal del distrito de La Victoria"],k:0,
+e:"Los mandamientos religiosos, que en alguna época se tuvieron por leyes divinas, fueron un ejemplo de derecho natural. El Código Penal, la Ley General de Sociedades y las ordenanzas son derecho positivo: derecho escrito dictado por una autoridad."},
+{id:"q4m06",x:4,u:2,t:T.a2,num:1,q:"¿Qué artículo de la Constitución protege a la familia y promueve el matrimonio como institutos naturales y fundamentales de la sociedad?",
+o:["Artículo 4","Artículo 5","Artículo 6","Artículo 2"],k:0,
+e:"Art. 4: protección de la familia y promoción del matrimonio. Art. 5: concubinato. Art. 6: paternidad y maternidad responsables. Art. 2: derechos fundamentales de la persona."},
+{id:"q4m07",x:4,u:2,t:T.c2,num:1,q:"La obligatoriedad de la educación inicial, primaria y secundaria, y su gratuidad en las instituciones del Estado, están en el:",
+o:["Artículo 17","Artículo 13","Artículo 16","Artículo 18"],k:0,
+e:"Art. 13: finalidad de la educación. Art. 16: sistema descentralizado y deber de que nadie quede excluido. Art. 17: educación obligatoria y gratuita. Art. 18: educación universitaria."},
+{id:"q4m08",x:4,u:2,t:T.d2,num:1,q:"El patrimonio cultural de la Nación está regulado en el:",
+o:["Artículo 21","Artículo 20","Artículo 19","Artículo 14"],k:0,
+e:"Art. 19: beneficios tributarios de los centros educativos. Art. 20: colegios profesionales. Art. 21: patrimonio cultural de la Nación (en la diapositiva, con Machu Picchu de fondo). Art. 14: contenidos de la educación."},
+{id:"q4m09",x:4,u:2,t:T.e2,num:1,q:"La protección contra el despido arbitrario está en el:",
+o:["Artículo 27","Artículo 26","Artículo 25","Artículo 28"],k:0,
+e:"Art. 25: jornada y descanso. Art. 26: principios de la relación laboral. Art. 27: adecuada protección contra el despido arbitrario. Art. 28: sindicación, negociación colectiva y huelga."},
+{id:"q4m10",x:4,u:2,t:T.a2,num:1,q:"Según el art. 326 del Código Civil, ¿cuánto tiempo debe durar una unión de hecho para originar una sociedad de bienes?",
+o:["Al menos dos años continuos","Al menos seis meses","Al menos cinco años","No se exige ningún plazo"],k:0,
+e:"El art. 326 del Código Civil exige que la unión de hecho, entre un varón y una mujer libres de impedimento matrimonial, haya durado por lo menos dos años continuos para originar una sociedad de bienes sujeta al régimen de sociedad de gananciales."},
+{id:"q4m11",x:4,u:2,t:T.e2,q:"Según el art. 25, los trabajadores tienen derecho a descanso semanal y anual remunerados, y su disfrute y compensación se regulan por:",
+o:["Ley o por convenio","Decisión unilateral del empleador","Ordenanza municipal","Acuerdo del sindicato con el alcalde"],k:0,
+e:"El art. 25 dispone que los trabajadores tienen derecho a descanso semanal y anual remunerados, y que su disfrute y su compensación se regulan por ley o por convenio."},
+{id:"q4m19",x:4,u:2,t:T.d2,num:1,q:"¿Qué ley regula el ejercicio profesional del licenciado en administración?",
+o:["Ley 31060","Ley 29227","Ley 26887","Ley 32330"],k:0,
+e:"La Ley 31060 es la Ley de ejercicio profesional del licenciado en administración (vista con el art. 20, colegios profesionales). La 29227 regula el divorcio rápido, la 26887 es la Ley General de Sociedades y la 32330 trata de la imputabilidad de los adolescentes de 16 y 17 años."},
+{id:"q4m12",x:4,u:3,t:T.c3,num:1,q:"¿En qué artículos están, respectivamente, el impedimento para postular a cargos de elección popular y el impedimento para ser designado en cargos de confianza, por condena en primera instancia por delito doloso?",
+o:["34-A y 39-A","33 y 34","34 y 35","37 y 38"],k:0,
+e:"La Ley 31042 incorporó el art. 34-A (impedimento para postular) y el art. 39-A (impedimento para ser designado en cargos de confianza). El art. 33 trata de la suspensión de la ciudadanía y el art. 34, de las Fuerzas Armadas y la Policía."},
+{id:"q4m13",x:4,u:3,t:T.b3,num:1,q:"El referéndum, y las materias que pueden o no someterse a él, están en el:",
+o:["Artículo 32","Artículo 31","Artículo 30","Artículo 35"],k:0,
+e:"Art. 30: ciudadanía. Art. 31: participación ciudadana y voto. Art. 32: referéndum. Art. 35: organizaciones políticas."},
+{id:"q4m14",x:4,u:3,t:T.a3,num:1,q:"¿Qué ley vista en la sesión 3 incorporó a los adolescentes de 16 y 17 años como sujetos imputables por determinados delitos?",
+o:["Ley 32330","Ley 31042","Ley 29227","Ley 31060"],k:0,
+e:"La Ley 32330 modificó el Código Penal (D. Leg. 635) y el Código de Responsabilidad Penal de Adolescentes (D. Leg. 1348). La Ley 31042 incorporó los arts. 34-A y 39-A; la 29227 regula el divorcio por mutuo acuerdo; y la 31060, el ejercicio profesional del licenciado en administración."},
+{id:"q4m15",x:4,u:3,t:T.d3,q:"¿Qué órgano emite un informe previo antes de que el Poder Ejecutivo conceda una extradición (art. 37)?",
+o:["La Corte Suprema","El Tribunal Constitucional","El Congreso de la República","La Defensoría del Pueblo"],k:0,
+e:"La extradición solo la concede el Poder Ejecutivo previo informe de la Corte Suprema, en cumplimiento de la ley y de los tratados, y según el principio de reciprocidad."},
+{id:"q4m16",x:4,u:3,t:T.e3,num:1,q:"El deber de todos los peruanos de honrar al Perú, proteger los intereses nacionales y respetar, cumplir y defender la Constitución está en el:",
+o:["Artículo 38","Artículo 1","Artículo 30","Artículo 36"],k:0,
+e:"Art. 1: fin supremo de la sociedad y del Estado. Art. 30: ciudadanía. Art. 36: asilo político. Art. 38: deberes de los peruanos."},
+{id:"q4m20",x:4,u:3,t:T.a3,num:1,q:"Según el art. 30, ¿a qué edad se adquiere la ciudadanía en el Perú?",
+o:["A los 18 años","A los 16 años","A los 21 años","A los 17 años"],k:0,
+e:"Son ciudadanos los peruanos mayores de dieciocho años, y para ejercer la ciudadanía se requiere la inscripción electoral. La Ley 32330, sobre adolescentes de 16 y 17 años, trata de la responsabilidad penal, no de la ciudadanía."}
+];
+const LEYES=[
+["Constitución Política del Perú (1993)","La «ley de leyes», la norma de mayor jerarquía. Título I: De la persona y de la sociedad.","1, 2 y 3"],
+["Decreto Legislativo 635","Código Penal. Su art. 28 fija las clases de pena; la Ley 32330 lo modificó.","1 y 3"],
+["Art. 28 del Código Penal","Clases de pena: privativa de libertad, restrictivas de libertad, limitativas de derechos y multa.","1"],
+["Ley 26887","Ley General de Sociedades (ejemplo de derecho positivo).","1"],
+["Ley 26859","Ley Orgánica de Elecciones (ejemplo de derecho positivo); el cartel del referéndum de 2018 cita sus arts. 169 y 209.","1 y 3"],
+["Ley 29227","Divorcio por mutuo acuerdo («divorcio rápido») en municipalidades autorizadas y notarías.","2"],
+["Art. 234 del Código Civil","Matrimonio: unión formal y solemne ante una autoridad.","2"],
+["Art. 326 del Código Civil","Unión de hecho: varón y mujer libres de impedimento matrimonial, al menos dos años continuos; sociedad de gananciales.","2"],
+["Ley 31060","Ley de ejercicio profesional del licenciado en administración (vista con el art. 20, colegios profesionales).","2"],
+["Art. 3 del Código Civil","Toda persona tiene capacidad jurídica para el goce y ejercicio de sus derechos; la capacidad de ejercicio solo puede restringirse por ley.","3"],
+["Ley 32330","Modifica el Código Penal y el Código de Responsabilidad Penal de Adolescentes: los adolescentes de 16 y 17 años son imputables por los delitos que enumera.","3"],
+["Decreto Legislativo 1348","Código de Responsabilidad Penal de Adolescentes.","3"],
+["Ley 31042 (2020)","Reforma constitucional que incorporó el art. 34-A (no pueden postular) y el art. 39-A (no pueden ser designados en cargos de confianza) los condenados en primera instancia por delito doloso, como autores o cómplices.","3"],
+["Ordenanza 118-2010-MLV","Reglamento de las juntas vecinales comunales del distrito de La Victoria (ejemplo de participación vecinal).","3"],
+["Decreto Legislativo 822","Ley sobre el Derecho de Autor: la advertencia final de las diapositivas indica que están protegidas por esta norma.","2 y 3"]
+];
+const ARTS=[
+{s:"Sesión 1. Título I, Capítulo I: Derechos fundamentales de la persona",r:[
+["Art. 1","La defensa de la persona humana y el respeto de su dignidad son el fin supremo de la sociedad y del Estado."],
+["Art. 2","Derechos fundamentales de la persona, en 24 incisos (ver la tabla siguiente)."]]},
+{s:"Sesión 1. Los 24 incisos del artículo 2",r:[
+["Inc. 1","Vida, identidad, integridad moral, psíquica y física, libre desarrollo y bienestar; el concebido es sujeto de derecho en todo cuanto le favorece."],
+["Inc. 2","Igualdad ante la ley; nadie debe ser discriminado."],
+["Inc. 3","Libertad de conciencia y de religión; no hay delito de opinión."],
+["Inc. 4","Libertades de información, opinión, expresión y difusión, sin previa autorización ni censura."],
+["Inc. 5","Acceso a la información pública sin expresar causa; levantamiento del secreto bancario y la reserva tributaria."],
+["Inc. 6","Los servicios informáticos no deben suministrar información que afecte la intimidad."],
+["Inc. 7","Honor, buena reputación, intimidad personal y familiar, voz e imagen propias."],
+["Inc. 8","Libertad de creación intelectual, artística, técnica y científica, y propiedad sobre ella."],
+["Inc. 9","Inviolabilidad del domicilio (salvo autorización, mandato judicial, flagrante delito o muy grave peligro)."],
+["Inc. 10","Secreto e inviolabilidad de las comunicaciones y documentos privados."],
+["Inc. 11","Elegir residencia, transitar por el territorio, salir y entrar."],
+["Inc. 12","Reunirse pacíficamente sin armas (en plazas y vías públicas, con anuncio anticipado)."],
+["Inc. 13","Asociarse y constituir fundaciones sin fines de lucro, sin autorización previa."],
+["Inc. 14","Contratar con fines lícitos."],
+["Inc. 15","Trabajar libremente, con sujeción a ley."],
+["Inc. 16","Propiedad y herencia."],
+["Inc. 17","Participar en la vida de la Nación: elección, remoción o revocación, iniciativa legislativa y referéndum."],
+["Inc. 18","Reserva sobre las propias convicciones y secreto profesional."],
+["Inc. 19","Identidad étnica y cultural."],
+["Inc. 20","Petición por escrito (FF. AA. y PNP, solo de forma individual)."],
+["Inc. 21","Nacionalidad; nadie puede ser privado de obtener o renovar su pasaporte."],
+["Inc. 22","Paz, tranquilidad, tiempo libre, descanso y ambiente equilibrado."],
+["Inc. 23","Legítima defensa."],
+["Inc. 24","Libertad y seguridad personales: a) nadie obligado a lo que la ley no manda; b) prohibidas la esclavitud y la trata; c) no hay prisión por deudas (salvo alimentos); d) legalidad penal; e) presunción de inocencia; f) detención solo por orden judicial o flagrancia; g) incomunicación limitada; h) prohibición de la violencia y la tortura."]]},
+{s:"Sesión 2. Capítulo II: De los derechos sociales y económicos",r:[
+["Art. 4","Protección especial del niño, el adolescente, la madre y el anciano en abandono; familia y matrimonio."],
+["Art. 5","Concubinato o unión de hecho."],
+["Art. 6","Paternidad y maternidad responsables; deberes de padres e hijos; igualdad de los hijos."],
+["Art. 7","Derecho a la salud; protección de la persona con discapacidad."],
+["Art. 8","Lucha contra el tráfico ilícito de drogas."],
+["Art. 9","Política nacional de salud (la norma y supervisa el Poder Ejecutivo)."],
+["Art. 10","Seguridad social universal y progresiva."],
+["Art. 11","Libre acceso a prestaciones de salud y pensiones (entidades públicas, privadas o mixtas)."],
+["Art. 12","Los fondos y reservas de la seguridad social son intangibles."],
+["Art. 13","Finalidad de la educación: desarrollo integral; libertad de enseñanza."],
+["Art. 14","Ciencia y tecnología; formación ética y cívica y enseñanza de la Constitución y los DD. HH.; educación religiosa."],
+["Art. 15","Profesorado como carrera pública; derechos del educando; promotores de la educación."],
+["Art. 16","Sistema educativo descentralizado; nadie excluido por razones económicas; inversión de al menos el 6 % del PBI."],
+["Art. 17","Educación inicial, primaria y secundaria obligatorias; gratuidad; erradicación del analfabetismo."],
+["Art. 18","Fines de la educación universitaria; libertad de cátedra."],
+["Art. 19","Inafectación tributaria de universidades y centros educativos."],
+["Art. 20","Colegios profesionales."],
+["Art. 21","Patrimonio cultural de la Nación."],
+["Art. 22","El trabajo es un deber y un derecho."],
+["Art. 23","Atención prioritaria al trabajo; nadie trabaja sin retribución ni sin su consentimiento."],
+["Art. 24","Remuneración equitativa y suficiente; prioridad de pago; remuneración mínima."],
+["Art. 25","Jornada máxima de 8 horas diarias o 48 semanales; descanso remunerado."],
+["Art. 26","Principios: igualdad de oportunidades, irrenunciabilidad e interpretación favorable al trabajador."],
+["Art. 27","Protección contra el despido arbitrario."],
+["Art. 28","Sindicación, negociación colectiva y huelga."],
+["Art. 29","Participación en las utilidades de la empresa."]]},
+{s:"Sesión 3. Capítulo III: De los derechos políticos y de los deberes",r:[
+["Art. 30","Son ciudadanos los peruanos mayores de 18 años; se requiere inscripción electoral."],
+["Art. 31","Participación ciudadana; voto personal, igual, libre, secreto y obligatorio hasta los 70 años."],
+["Art. 32","Materias que pueden y no pueden someterse a referéndum."],
+["Art. 33","Suspensión de la ciudadanía: interdicción, pena privativa de la libertad, inhabilitación política."],
+["Art. 34","FF. AA. y PNP: votan, pero no postulan ni hacen proselitismo hasta su retiro."],
+["Art. 34-A","Impedimento para postular: condena en primera instancia por delito doloso (Ley 31042)."],
+["Art. 35","Organizaciones políticas; su inscripción les da personalidad jurídica."],
+["Art. 36","Asilo político."],
+["Art. 37","Extradición."],
+["Art. 38","Deber de honrar al Perú y de respetar, cumplir y defender la Constitución."],
+["Art. 39-A","Impedimento para cargos de confianza: condena en primera instancia por delito doloso (Ley 31042)."]]}
+];
+const CLAVES=[
+"Capítulo I del Título I (arts. 1 al 3): derechos fundamentales de la persona. En clase se vieron los arts. 1 y 2.",
+"Capítulo II (arts. 4 al 29): familia, 4 al 6; salud y seguridad social, 7 al 12; educación, 13 al 19; colegios profesionales, 20; patrimonio cultural, 21; trabajo, 22 al 29.",
+"Capítulo III (arts. 30 al 38): ciudadanía, 30; participación y voto, 31; referéndum, 32; suspensión, 33; FF. AA. y PNP, 34; organizaciones políticas, 35; asilo, 36; extradición, 37; deberes, 38.",
+"Ley 31042 = arts. 34-A y 39-A. Ley 32330 = adolescentes de 16 y 17 años imputables. Ley 29227 = divorcio rápido. Ley 31060 = licenciado en administración.",
+"Código Penal = D. Leg. 635 (art. 28: clases de pena). Responsabilidad penal de adolescentes = D. Leg. 1348. Derecho de autor = D. Leg. 822.",
+"Código Civil: art. 3, capacidad; art. 234, matrimonio; art. 326, unión de hecho (dos años continuos).",
+"Ley 26859 = Ley Orgánica de Elecciones. Ley 26887 = Ley General de Sociedades."
+];
+
+(function(){
+"use strict";
+const QZ=[
+{n:1,tit:"Sesión 1",desc:"El Derecho, la ley y la sanción, derecho natural y positivo, y los arts. 1 y 2 de la Constitución."},
+{n:2,tit:"Sesión 2",desc:"Derechos sociales y económicos: familia, salud, seguridad social, educación y trabajo (arts. 4 al 29)."},
+{n:3,tit:"Sesión 3",desc:"Derechos políticos y deberes: ciudadanía, voto, referéndum, impedimentos, asilo y extradición (arts. 30 al 38)."},
+{n:4,tit:"Examen final",desc:"Las tres sesiones mezcladas, con énfasis en números de leyes y artículos.",fin:true}];
+const EXS=QZ.map(q=>{const mc=MC.filter(p=>p.x===q.n).sort((a,b)=>a.u-b.u);return Object.assign({},q,{mc,ids:mc.map(p=>p.id)});});
+const BYID=new Map(MC.map(p=>[p.id,p]));
+const LIM=360;
+const view=document.getElementById("view");
+const $=(s,r)=>(r||document).querySelector(s);
+const $$=(s,r)=>Array.from((r||document).querySelectorAll(s));
+const LETRAS=["A","B","C","D"];
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const norm=s=>String(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g," ").trim();
+const shuffle=a=>{const b=a.slice();for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b;};
+const redondear=x=>Math.floor(x+0.5+1e-9);
+const dos=n=>String(n).padStart(2,"0");
+const mmss=s=>{s=Math.max(0,Math.round(s));return `${Math.floor(s/60)}:${dos(s%60)}`;};
+const sinMovimiento=()=>!!(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+const irArriba=()=>{try{window.scrollTo(0,0);}catch(e){}};
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch(e){return d;}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}},del(k){try{localStorage.removeItem(k);}catch(e){}}};
+const KP="ddhh-4mc-",kD=n=>KP+"borrador-"+n,kH=n=>KP+"historial-"+n,kL=n=>KP+"limite-"+n,kI=n=>KP+"inst-"+n;
+let modo="inicio",P=null,E=null,timerId=null;
+const respondida=(ex,id)=>typeof ex.resp[id]==="number";
+const limActivo=n=>EXS[n-1].fin?true:store.get(kL(n),true)!==false;
+const instActivo=n=>{const v=store.get(kI(n),null);return v===null?!EXS[n-1].fin:v!==false;};
+const quedan=d=>d&&d.lim?Math.max(0,Math.ceil((d.fin-Date.now())/1000)):0;
+const nombreQ=ex=>ex.fin?"examen final":"quiz";
+function fecha(f){try{const d=new Date(f);return d.toLocaleDateString("es-PE",{day:"numeric",month:"short"})+", "+d.toLocaleTimeString("es-PE",{hour:"2-digit",minute:"2-digit"});}catch(e){return "";}}
+function cargarBorrador(n){
+  const ex=EXS[n-1];if(!ex)return null;
+  const d=store.get(kD(n),null);
+  if(!d||d.v!==1||d.n!==n||!Array.isArray(d.ids)||d.entregado)return null;
+  if(d.ids.join()!==ex.ids.join()){store.del(kD(n));return null;}
+  d.resp=d.resp||{};d.orden=d.orden||{};
+  ex.mc.forEach(p=>{if(!(Array.isArray(d.orden[p.id])&&d.orden[p.id].length===4))d.orden[p.id]=shuffle([0,1,2,3]);});
+  return d;
+}
+
+/* ===== Inicio ===== */
+function tarjeta(ex){
+  const d=cargarBorrador(ex.n),h=store.get(kH(ex.n),[]),ult=h[0],lim=limActivo(ex.n),inst=instActivo(ex.n),nNum=ex.mc.filter(p=>p.num).length;
+  let aviso="";
+  if(d){const r=d.lim?quedan(d):null;
+    aviso=`<p class="aviso">${r===0?"Se acabó el tiempo de tu intento: al continuar verás tu nota.":`Tienes ${ex.fin?"el examen":"este quiz"} en curso: ${d.ids.filter(id=>respondida(d,id)).length} de ${d.ids.length} respondidas${r!==null?`; quedan ${mmss(r)}`:""}.`}</p>`;}
+  const nota=ult?`<p class="small ultima">Última nota: <b class="h-nota${ult.nota<11?" rojo":""}">${ult.nota}</b><span>${esc(fecha(ult.f))}${ult.lim?"":", sin límite"}${h.length>1?` · mejor: ${Math.max(...h.map(x=>x.nota))}`:""}</span></p>`:"";
+  const swI=`<label class="switch"><input type="checkbox" data-inst="${ex.n}"${inst?" checked":""}${d?" disabled":""}><span class="sw-track" aria-hidden="true"></span><span>Respuestas inmediatas</span></label>`;
+  const sw=(ex.fin?`<p class="small obligatorio">El límite de 6 minutos es obligatorio y no hay modo práctica.</p>`:`<label class="switch"><input type="checkbox" data-lim="${ex.n}"${lim?" checked":""}${d?" disabled":""}><span class="sw-track" aria-hidden="true"></span><span>Límite de 6 minutos</span></label>`)+swI;
+  return `<section class="sheet excard${ex.fin?" final":""}"><p class="kicker">${ex.fin?"Examen final":`Quiz ${ex.n} de 3`}</p><h2>${esc(ex.tit)}</h2><p>${esc(ex.desc)}${nNum?` Incluye ${nNum} preguntas sobre números de leyes y artículos.`:""}</p>
+<ul class="estructura"><li><span>Preguntas para marcar</span><b>${ex.mc.length}</b></li><li><span>Valor de cada pregunta</span><b>1 punto</b></li><li><span>Tiempo</span><b data-tiempo="${ex.n}">${ex.fin?"6 min (obligatorio)":(lim?"6 min":"Sin límite")}</b></li><li><span>Respuestas</span><b data-resp="${ex.n}">${inst?"Al instante":"Al entregar"}</b></li></ul>
+${sw}${aviso}${nota}<div class="grow"></div>
+<div class="row"><button type="button" class="btn primary" data-act="rendir" data-n="${ex.n}">${d?"Continuar":"Rendir"} ${nombreQ(ex)}</button>${ex.fin?"":`<button type="button" class="btn" data-act="practicar" data-n="${ex.n}">Practicar sin tiempo</button>`}</div>
+${d?`<div class="row"><button type="button" class="btn ghost sm" data-act="descartar" data-n="${ex.n}">Descartar el intento en curso</button></div>`:""}</section>`;
+}
+function renderInicio(){
+  modo="inicio";
+  view.innerHTML=`<div class="quizgrid">${EXS.map(tarjeta).join("")}</div>
+<section class="sheet teoria-card"><div><h2>Teoría: números de leyes y artículos</h2><p>Repasa las leyes, decretos y artículos de las diapositivas antes del examen final.</p></div><div class="row"><button type="button" class="btn" data-act="teoria">Ver la teoría</button></div></section>
+<p class="small foot">Todos son de alternativas: 20 preguntas de 1 punto, así que tu nota es el número de respuestas correctas. Con el límite activado tienes 6 minutos; al llegar a 0:00 se entrega solo y las preguntas sin responder valen 0. En los quizzes 1 a 3 puedes desactivar el límite; en el examen final es obligatorio. Con «Respuestas inmediatas» ves si acertaste apenas marcas, y esa respuesta ya no se puede cambiar; si lo apagas, ves todo al entregar.</p>`;
+}
+
+/* ===== Práctica (quizzes 1 a 3 y repaso) ===== */
+function iniciarPractica(cfg){
+  const lista=cfg.n?EXS[cfg.n-1].mc.slice():(cfg.ids||[]).map(id=>BYID.get(id)).filter(Boolean);
+  const items=lista.map(p=>({p,orden:shuffle([0,1,2,3])}));
+  if(!items.length){renderInicio();return;}
+  P={cfg,items,i:0,ok:0,n:0,log:[]};
+  renderPregunta();irArriba();
+}
+const etiquetaP=()=>P.cfg.n?`Quiz ${P.cfg.n}, práctica sin tiempo`:"Repaso";
+const marcador=()=>P.n?`Aciertos ${P.ok} de ${P.n}`:"Sin respuestas aún";
+function renderPregunta(){
+  modo="practica";
+  const it=P.items[P.i],p=it.p,tot=P.items.length,ult=P.i+1>=tot;
+  view.innerHTML=`<div class="ptop"><button type="button" class="btn ghost sm" data-act="inicio">Inicio</button><span class="pcount">${esc(etiquetaP())} · ${P.i+1} de ${tot}</span><span class="pscore" id="pscore">${marcador()}</span></div><div class="pbar" aria-hidden="true"><span style="width:${P.i/tot*100}%"></span></div>
+<article class="sheet q"><p class="meta"><span class="utag">Sesión ${p.u}</span><span>${esc(p.t)}</span>${p.num?'<span class="ntag">Números</span>':""}</p><h2 class="q-text">${esc(p.q)}</h2><div class="ops" role="group" aria-label="Alternativas">${it.orden.map((oi,di)=>`<button type="button" class="op" data-act="marcar" data-d="${di}"><span class="bubble" aria-hidden="true">${LETRAS[di]}</span><span class="op-t"><span class="sr">${LETRAS[di]}. </span>${esc(p.o[oi])}</span></button>`).join("")}</div><div id="eval" aria-live="polite"></div><p class="small atajo">Atajo: teclas A, B, C y D; Enter para seguir.</p></article>
+<div class="row between"><button type="button" class="btn" data-act="terminar">Terminar práctica</button><button type="button" class="btn primary" data-act="siguiente" id="sig" hidden>${ult?"Ver resultados":"Siguiente pregunta"}</button></div>`;
+}
+function marcar(b){
+  const it=P&&P.items[P.i];if(!it||it.hecho)return;
+  const di=Number(b.dataset.d),oi=it.orden[di],ok=oi===it.p.k;
+  it.hecho=true;P.n++;if(ok)P.ok++;P.log.push({id:it.p.id,ok});
+  $$(".op",view).forEach((x,j)=>{x.disabled=true;if(it.orden[j]===it.p.k)x.classList.add("ok");else if(j===di)x.classList.add("bad");});
+  const c=LETRAS[it.orden.indexOf(it.p.k)],ev=$("#eval");
+  ev.innerHTML=`<div class="fb-box ${ok?"is-ok":"is-bad"}"><p class="fb-title">${ok?"Correcto.":`Incorrecto. La respuesta correcta es la ${c}.`}</p><p>${esc(it.p.e)}</p></div>`;
+  const s=$("#pscore");if(s)s.textContent=marcador();
+  const sig=$("#sig");sig.hidden=false;
+  if(ev.scrollIntoView)ev.scrollIntoView({block:"nearest",behavior:sinMovimiento()?"auto":"smooth"});
+  sig.focus({preventScroll:true});
+}
+function siguiente(){if(!P||!P.items[P.i]||!P.items[P.i].hecho)return;P.i++;if(P.i>=P.items.length)renderResumen();else renderPregunta();irArriba();}
+function renderResumen(){
+  if(!P){renderInicio();return;}
+  modo="resumen";
+  const fallidas=P.log.filter(l=>!l.ok).map(l=>l.id);P.fallidas=fallidas;
+  const temas=[...new Set(fallidas.map(id=>BYID.get(id).t))],completo=!!P.cfg.n&&P.n===P.items.length;
+  view.innerHTML=`<section class="sheet"><h2>Práctica terminada</h2>${P.n?`<p>Acertaste <strong>${P.ok} de ${P.n}</strong> (${Math.round(P.ok/P.n*100)} %).${completo?` Si hubiera sido el quiz, tu nota sería <strong>${redondear(P.ok*20/P.items.length)} de 20</strong>.`:""}</p>`:"<p>No respondiste ninguna pregunta.</p>"}${temas.length?`<h3>Temas para repasar</h3><ul>${temas.map(t=>`<li>${esc(t)}</li>`).join("")}</ul>`:(P.n?"<p>No fallaste ninguna.</p>":"")}<div class="row">${fallidas.length?`<button type="button" class="btn primary" data-act="repasar">Repasar las que fallé (${fallidas.length})</button>`:""}${P.cfg.n?`<button type="button" class="btn${fallidas.length?"":" primary"}" data-act="rendir" data-n="${P.cfg.n}">Rendir el quiz ${P.cfg.n}</button>`:""}<button type="button" class="btn" data-act="otra">Practicar otra vez</button><button type="button" class="btn ghost" data-act="inicio">Inicio</button></div></section>`;
+}
+
+/* ===== Quiz y examen final ===== */
+function nuevoExamen(n){
+  const ex=EXS[n-1],orden={},lim=limActivo(n);ex.mc.forEach(p=>{orden[p.id]=shuffle([0,1,2,3]);});
+  E={v:1,n,ids:ex.ids.slice(),orden,resp:{},t:0,lim,inst:instActivo(n),fin:lim?Date.now()+LIM*1000:0,entregado:false};
+  guardarE();renderExamen();irArriba();
+}
+const guardarE=()=>{if(E&&!E.resultado&&!E.entregado)store.set(kD(E.n),E);};
+function medirBarra(){const b=$(".exam-bar");if(b)document.documentElement.style.setProperty("--barh",b.offsetHeight+"px");}
+function renderExamen(){
+  modo="examen";
+  const ex=EXS[E.n-1],lista=E.ids.map(id=>BYID.get(id));
+  const bloques=lista.map((p,i)=>{const num=i+1,sel=E.resp[p.id],lock=!!E.inst&&typeof sel==="number";return `<article class="sheet q" id="q${num}" tabindex="-1"><p class="meta"><span class="utag">Sesión ${p.u}</span></p><h3 class="q-text" id="qt-${p.id}"><span class="qn">${num}.</span> ${esc(p.q)}</h3><div class="ops" role="radiogroup" aria-labelledby="qt-${p.id}">${E.orden[p.id].map((oi,di)=>`<label class="op${lock?(oi===p.k?" ok":oi===sel?" bad":""):""}"><input type="radio" name="r-${p.id}" value="${oi}" data-q="${p.id}"${sel===oi?" checked":""}${lock?" disabled":""}><span class="bubble" aria-hidden="true">${LETRAS[di]}</span><span class="op-t"><span class="sr">${LETRAS[di]}. </span>${esc(p.o[oi])}</span></label>`).join("")}</div><div class="fb" data-fb="${p.id}" aria-live="polite">${lock?fbHTML(p,sel):""}</div></article>`;}).join("");
+  view.innerHTML=`<div class="exam-bar"><strong class="ex-tit">${ex.fin?"Examen final":`Quiz ${E.n}`}</strong><span class="timer" id="timer" title="${E.lim?"Tiempo restante":"Tiempo transcurrido"}"></span><span id="cuenta"></span><button type="button" class="btn primary sm" data-act="entregar">Entregar</button>${E.lim?`<div class="tbar" aria-hidden="true"><span id="tbar"></span></div>`:""}</div>
+<p class="sr" id="aviso-t" aria-live="assertive"></p>
+<nav class="chips" aria-label="Ir a una pregunta">${lista.map((p,i)=>`<button type="button" class="chip" data-act="ir" data-n="${i+1}" aria-label="Ir a la pregunta ${i+1}">${i+1}</button>`).join("")}</nav>
+<p class="parte-sub">${E.lim?"Tienes 6 minutos. Al llegar a 0:00 se entrega automáticamente y las preguntas sin responder valen 0.":"Sin límite de tiempo."} Cada pregunta vale 1 punto.${E.inst?" Las respuestas se muestran al instante y ya no se pueden cambiar.":" Verás las respuestas al entregar."}</p>
+${bloques}
+<div class="row between">${E.lim?"<span></span>":`<button type="button" class="btn" data-act="inicio">Guardar y salir</button>`}<button type="button" class="btn primary" data-act="entregar">Entregar ${nombreQ(ex)}</button></div>`;
+  actualizarCuenta();pintarReloj();medirBarra();
+  clearInterval(timerId);timerId=setInterval(tick,1000);
+}
+function fbHTML(p,sel){const ok=sel===p.k,c=LETRAS[E.orden[p.id].indexOf(p.k)];return `<div class="fb-box ${ok?"is-ok":"is-bad"}"><p class="fb-title">${ok?"Correcto.":`Incorrecto. La respuesta correcta es la ${c}.`}</p><details class="modelo"><summary>Ver explicación</summary><p>${esc(p.e)}</p></details></div>`;}
+function bloquear(id){
+  const p=BYID.get(id),sel=E.resp[id],caja=view.querySelector(`[data-fb="${id}"]`);if(!p||!caja)return;
+  $$("input[type=radio]",caja.closest("article")).forEach(r=>{r.disabled=true;const l=r.closest(".op");if(Number(r.value)===p.k)l.classList.add("ok");else if(Number(r.value)===sel)l.classList.add("bad");});
+  caja.innerHTML=fbHTML(p,sel);
+}
+function pintarReloj(){
+  const el=$("#timer");if(!el||!E)return;
+  if(E.lim){const r=quedan(E);el.textContent=mmss(r);const urge=r<=60;el.classList.toggle("urgente",urge);const bar=$(".exam-bar");if(bar)bar.classList.toggle("urge",urge);const b=$("#tbar");if(b)b.style.width=(r/LIM*100)+"%";}
+  else el.textContent=mmss(E.t||0);
+}
+function tick(){
+  if(!E||modo!=="examen"||E.entregado)return;
+  if(E.lim){
+    const r=quedan(E);pintarReloj();
+    if(r<=60&&!E.avisado){E.avisado=true;const a=$("#aviso-t");if(a)a.textContent="Queda 1 minuto.";}
+    if(r<=0)entregar(true);
+  }else{E.t=(E.t||0)+1;pintarReloj();if(E.t%15===0)guardarE();}
+}
+function actualizarCuenta(){
+  const n=E.ids.filter(id=>respondida(E,id)).length,c=$("#cuenta");
+  if(c)c.textContent=`Respondidas ${n} de ${E.ids.length}`+(E.inst?` · ${E.ids.filter(id=>respondida(E,id)&&E.resp[id]===BYID.get(id).k).length} correctas`:"");
+  $$(".chip",view).forEach((ch,i)=>ch.classList.toggle("done",respondida(E,E.ids[i])));
+}
+function irA(n){const el=document.getElementById("q"+n);if(!el)return;medirBarra();if(el.scrollIntoView)el.scrollIntoView({behavior:sinMovimiento()?"auto":"smooth",block:"start"});el.focus({preventScroll:true});}
+function dialogo(titulo,texto,okTxt,onOk){
+  const prev=document.activeElement,d=document.createElement("div");d.className="dlg-back";
+  d.innerHTML=`<div class="sheet dlg" role="dialog" aria-modal="true" aria-labelledby="dlg-t" aria-describedby="dlg-d"><h2 id="dlg-t">${esc(titulo)}</h2><p id="dlg-d">${esc(texto)}</p><div class="row between"><button type="button" class="btn" data-x="no">Seguir respondiendo</button><button type="button" class="btn primary" data-x="si">${esc(okTxt)}</button></div></div>`;
+  const tecla=e=>{if(e.key==="Escape"){e.preventDefault();cerrar();}else if(e.key==="Tab"){const bs=$$("button",d),i=bs.indexOf(document.activeElement);e.preventDefault();bs[(i+(e.shiftKey?bs.length-1:1)+bs.length)%bs.length].focus();}};
+  const cerrar=()=>{d.remove();document.removeEventListener("keydown",tecla,true);if(prev&&prev.focus&&document.body.contains(prev))prev.focus({preventScroll:true});};
+  d.addEventListener("click",e=>{if(e.target===d){cerrar();return;}const x=e.target.closest("[data-x]");if(!x)return;cerrar();if(x.dataset.x==="si")onOk();});
+  document.addEventListener("keydown",tecla,true);document.body.appendChild(d);$("[data-x=si]",d).focus();
+}
+function pedirEntrega(){
+  if(!E||E.entregado)return;
+  const f=E.ids.filter(id=>!respondida(E,id)).length,nom=nombreQ(EXS[E.n-1]);
+  dialogo(`Entregar ${nom}`,f?`Te ${f===1?"falta 1 pregunta":`faltan ${f} preguntas`} por responder; valdrán 0. ¿Entregas de todos modos?`:"Ya no podrás cambiar tus respuestas. ¿Entregas?",f?"Entregar así":"Entregar",()=>entregar(false));
+}
+function entregar(auto){
+  if(!E||E.entregado)return;
+  clearInterval(timerId);timerId=null;
+  const dl=$(".dlg-back");if(dl)dl.remove();
+  const usado=E.lim?Math.min(LIM,LIM-quedan(E)):(E.t||0);
+  E.entregado=true;
+  const res=E.ids.map(id=>{const p=BYID.get(id),el=typeof E.resp[id]==="number"?E.resp[id]:null;return {id,elegida:el,ok:el===p.k};});
+  const ok=res.filter(r=>r.ok).length,sin=res.filter(r=>r.elegida===null).length,total=ok*20/res.length;
+  const ses={},maxS={};res.forEach(r=>{const u=BYID.get(r.id).u;maxS[u]=(maxS[u]||0)+1;ses[u]=(ses[u]||0)+(r.ok?1:0);});
+  E.resultado={res,ok,sin,total,ses,maxS,auto:!!auto,usado};
+  store.del(kD(E.n));
+  const h=store.get(kH(E.n),[]);h.unshift({f:Date.now(),nota:redondear(total),ok,s:usado,lim:!!E.lim,inst:!!E.inst});store.set(kH(E.n),h.slice(0,10));
+  renderResultado();irArriba();
+}
+function mensajeNota(n){
+  if(n>=17)return "Excelente: dominas este contenido.";
+  if(n>=14)return "Buen nivel. Revisa lo que fallaste para afinar detalles.";
+  if(n>=11)return "Aprobado, pero con vacíos. Repasa los temas que fallaste.";
+  return "Aún no llegas a 11. Repasa la teoría y los temas que fallaste, y vuelve a intentarlo.";
+}
+function renderResultado(){
+  modo="resultado";
+  const R=E.resultado,ex=EXS[E.n-1],nota=redondear(R.total),aprob=nota>=11,nom=nombreQ(ex);
+  const fallos=R.res.filter(r=>!r.ok).length,sig=ex.fin?null:E.n+1;
+  const revs=R.res.map((r,i)=>{const p=BYID.get(r.id),orden=E.orden[r.id],L=oi=>LETRAS[orden.indexOf(oi)];
+    const tuya=r.elegida===null?"<em>Sin responder</em>":`${L(r.elegida)}. ${esc(p.o[r.elegida])}`;
+    return `<article class="sheet rev ${r.ok?"is-ok":"is-bad"}" data-ok="${r.ok?1:0}"><p class="meta"><span class="utag">Sesión ${p.u}</span><span>${esc(p.t)}</span><span class="pts">${r.ok?"Correcta":r.elegida===null?"Sin responder":"Incorrecta"}</span></p><h3 class="q-text"><span class="qn">${i+1}.</span> ${esc(p.q)}</h3><p class="lin"><span class="lab">Tu respuesta</span><span>${tuya}</span></p>${r.ok?"":`<p class="lin"><span class="lab">Correcta</span><span>${L(p.k)}. ${esc(p.o[p.k])}</span></p>`}<p class="exp">${esc(p.e)}</p></article>`;}).join("");
+  const tiempo=E.lim?`Usaste ${mmss(R.usado)} de 6:00.`:`Tiempo: ${mmss(R.usado)}, sin límite.`;
+  view.innerHTML=`${R.auto?`<p class="sheet aviso-fin" role="status"><strong>Se acabó el tiempo.</strong> El ${nom} se entregó automáticamente; las preguntas sin responder valen 0.</p>`:""}<section class="sheet result"><div class="stamp${aprob?"":" rojo"}${sinMovimiento()?"":" anim"}" role="img" aria-label="${ex.fin?"Examen final":`Quiz ${E.n}`}: nota ${nota} de 20, ${aprob?"aprobado":"desaprobado"}"><span class="s-top" aria-hidden="true">${ex.fin?"Final":`Quiz ${E.n}`}</span><span class="s-num" aria-hidden="true">${nota}</span><span class="s-bot" aria-hidden="true">${aprob?"Aprobado":"Desaprobado"}</span></div>
+<div class="result-txt"><h2>Tu nota: ${nota} de 20</h2><p>${mensajeNota(nota)}</p>
+<dl class="breakdown tres"><div><dt>Correctas</dt><dd>${R.ok}</dd></div><div><dt>Incorrectas</dt><dd>${R.res.length-R.ok-R.sin}</dd></div><div><dt>Sin responder</dt><dd>${R.sin}</dd></div></dl>
+${Object.keys(R.maxS).length>1?`<dl class="breakdown tres">${Object.keys(R.maxS).sort().map(u=>`<div><dt>Sesión ${u}</dt><dd>${R.ses[u]||0} de ${R.maxS[u]}</dd></div>`).join("")}</dl>`:""}
+<p class="small">Cada respuesta correcta vale 1 punto. ${tiempo}</p></div></section>
+<div class="row"><button type="button" class="btn primary" data-act="rendir" data-n="${E.n}">Rendir otra vez</button>${fallos?`<button type="button" class="btn" data-act="practicar-fallos">Repasar lo que fallé (${fallos})</button>`:""}${sig?`<button type="button" class="btn" data-act="rendir" data-n="${sig}">${sig===4?"Ir al examen final":`Ir al quiz ${sig}`}</button>`:""}<button type="button" class="btn ghost" data-act="inicio">Inicio</button></div>
+<div class="rev-head"><h2>Revisión</h2><label class="toggle"><input type="checkbox" id="solo-err"> Mostrar solo lo que fallé</label></div>${revs}`;
+}
+
+/* ===== Teoría ===== */
+function renderTeoria(){
+  modo="teoria";
+  const fila=(a,b,c)=>`<tr data-q="${norm(a+" "+b+" "+(c||""))}"><th scope="row">${esc(a)}</th><td>${esc(b)}</td>${c!==undefined?`<td class="ses">${esc(c)}</td>`:""}</tr>`;
+  view.innerHTML=`<div class="ptop"><button type="button" class="btn ghost sm" data-act="inicio">Inicio</button><span class="pcount">Teoría: números de leyes y artículos</span></div>
+<section class="sheet teoria"><p class="lead">Todas las leyes, decretos y artículos que aparecen en las diapositivas de las sesiones 1, 2 y 3. Escribe un número o una palabra para filtrar.</p>
+<label class="sr" for="filtro">Filtrar la teoría</label><input id="filtro" type="search" placeholder="Ej.: 29227, unión de hecho, extradición" autocomplete="off">
+<p class="small" id="sin-res" hidden>No hay coincidencias.</p>
+<div class="grupo"><h2>Leyes, decretos y códigos citados</h2><div class="tabla"><table><thead><tr><th scope="col">Norma</th><th scope="col">Qué regula o por qué se citó</th><th scope="col">Sesión</th></tr></thead><tbody>${LEYES.map(l=>fila(l[0],l[1],l[2])).join("")}</tbody></table></div></div>
+${ARTS.map(g=>`<div class="grupo"><h2>${esc(g.s)}</h2><div class="tabla"><table><tbody>${g.r.map(r=>fila(r[0],r[1])).join("")}</tbody></table></div></div>`).join("")}
+<div class="grupo"><h2>Claves para memorizar</h2><ul class="claves">${CLAVES.map(c=>`<li data-q="${norm(c)}">${esc(c)}</li>`).join("")}</ul></div>
+<div class="row"><button type="button" class="btn primary" data-act="inicio">Volver al inicio</button></div></section>`;
+}
+function filtrar(q){
+  const t=norm(q);let vis=0;
+  $$(".teoria [data-q]",view).forEach(el=>{const ok=!t||el.dataset.q.includes(t);el.hidden=!ok;if(ok)vis++;});
+  $$(".teoria .grupo",view).forEach(g=>{g.hidden=!!t&&!g.querySelector("[data-q]:not([hidden])");});
+  const s=$("#sin-res");if(s)s.hidden=vis>0;
+}
+
+/* ===== Eventos ===== */
+function limpiar(){
+  if(timerId){clearInterval(timerId);timerId=null;}
+  const d=$(".dlg-back");if(d)d.remove();
+  view.classList.remove("solo-err");
+}
+const acciones={
+  inicio:()=>{if(modo==="examen")guardarE();limpiar();renderInicio();irArriba();},
+  rendir:b=>{const n=Number(b.dataset.n);if(!EXS[n-1])return;if(modo==="examen")guardarE();const d=cargarBorrador(n);limpiar();
+    if(d){E=d;if(d.lim&&quedan(d)<=0){modo="examen";entregar(true);return;}renderExamen();irArriba();}else nuevoExamen(n);},
+  descartar:b=>{store.del(kD(Number(b.dataset.n)));renderInicio();},
+  practicar:b=>{const n=Number(b.dataset.n);if(!EXS[n-1]||EXS[n-1].fin)return;limpiar();iniciarPractica({n});},
+  teoria:()=>{limpiar();renderTeoria();irArriba();},
+  marcar:b=>marcar(b),
+  siguiente:()=>siguiente(),
+  terminar:()=>{limpiar();renderResumen();irArriba();},
+  repasar:()=>{const ids=P.fallidas.slice();limpiar();iniciarPractica({ids});},
+  otra:()=>{const cfg=P.cfg;limpiar();iniciarPractica(cfg);},
+  ir:b=>irA(Number(b.dataset.n)),
+  entregar:()=>pedirEntrega(),
+  "practicar-fallos":()=>{const ids=E.resultado.res.filter(r=>!r.ok).map(r=>r.id);limpiar();iniciarPractica({ids});}
+};
+view.addEventListener("click",e=>{const b=e.target.closest("[data-act]");if(!b||!view.contains(b))return;const f=acciones[b.dataset.act];if(f)f(b);});
+view.addEventListener("change",e=>{const t=e.target;
+  if(modo==="examen"&&t.matches("input[type=radio][data-q]")){E.resp[t.dataset.q]=Number(t.value);guardarE();actualizarCuenta();if(E.inst)bloquear(t.dataset.q);}
+  else if(t.matches("input[data-lim]")){const n=Number(t.dataset.lim);store.set(kL(n),t.checked);const b=view.querySelector(`[data-tiempo="${n}"]`);if(b)b.textContent=t.checked?"6 min":"Sin límite";}
+  else if(t.matches("input[data-inst]")){const n=Number(t.dataset.inst);store.set(kI(n),t.checked);const b=view.querySelector(`[data-resp="${n}"]`);if(b)b.textContent=t.checked?"Al instante":"Al entregar";}
+  else if(t.id==="solo-err")view.classList.toggle("solo-err",t.checked);});
+view.addEventListener("input",e=>{if(e.target.id==="filtro")filtrar(e.target.value);});
+document.addEventListener("keydown",e=>{
+  if(modo!=="practica"||!P||e.ctrlKey||e.metaKey||e.altKey)return;
+  if(e.target.closest&&e.target.closest("textarea,input,select"))return;
+  const it=P.items[P.i];if(!it)return;
+  if(!it.hecho){const m={a:0,b:1,c:2,d:3,"1":0,"2":1,"3":2,"4":3}[e.key.toLowerCase()];if(m!==undefined){const b=view.querySelector(`.op[data-d="${m}"]`);if(b){e.preventDefault();marcar(b);}}}
+  else if(e.key==="Enter"&&!(e.target.closest&&e.target.closest("button,a,summary"))){e.preventDefault();siguiente();}
+});
+window.addEventListener("resize",medirBarra);
+window.addEventListener("pagehide",()=>{if(modo==="examen")guardarE();});
+window.__quiz={MC,EXS};
+renderInicio();
+})();
+</script>
+</body>
+</html>
